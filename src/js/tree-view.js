@@ -1,202 +1,325 @@
-// tree-view.js — D3.js collapsible tree visualization
+// tree-view.js — D3.js collapsible tree visualization (enhanced)
 
 export class TreeView {
     constructor(app) {
         this.app = app;
-        this.svg = d3.select('#tree-svg');
         this.container = document.getElementById('viz-container');
+        this.svg = d3.select('#tree-svg');
         this.tooltip = document.getElementById('tooltip');
         this.root = null;
-        this.treeLayout = null;
-        this.g = null;
-        this.zoom = null;
         this.nodeMap = new Map();
+        this.duration = 600;
+        this.nodeRadius = 14;
         this.currentView = 'tree';
-
-        this.nodeRadius = 8;
-        this.duration = 500;
-
         this.setupSVG();
     }
 
     setupSVG() {
-        const width = this.container.clientWidth;
-        const height = this.container.clientHeight;
+        const defs = this.svg.append('defs');
 
-        this.svg.attr('viewBox', null);
+        // Glow filter for nodes
+        const glow = defs.append('filter')
+            .attr('id', 'node-glow')
+            .attr('x', '-50%').attr('y', '-50%')
+            .attr('width', '200%').attr('height', '200%');
+        glow.append('feGaussianBlur')
+            .attr('stdDeviation', '4')
+            .attr('result', 'blur');
+        glow.append('feComposite')
+            .attr('in', 'SourceGraphic')
+            .attr('in2', 'blur')
+            .attr('operator', 'over');
 
-        // Zoom behavior
+        // Stronger glow for selected nodes
+        const glowStrong = defs.append('filter')
+            .attr('id', 'node-glow-strong')
+            .attr('x', '-80%').attr('y', '-80%')
+            .attr('width', '260%').attr('height', '260%');
+        glowStrong.append('feGaussianBlur')
+            .attr('stdDeviation', '8')
+            .attr('result', 'blur');
+        glowStrong.append('feComposite')
+            .attr('in', 'SourceGraphic')
+            .attr('in2', 'blur')
+            .attr('operator', 'over');
+
+        // Drop shadow for tooltip etc.
+        const shadow = defs.append('filter')
+            .attr('id', 'drop-shadow')
+            .attr('x', '-30%').attr('y', '-30%')
+            .attr('width', '160%').attr('height', '160%');
+        shadow.append('feDropShadow')
+            .attr('dx', '0').attr('dy', '2')
+            .attr('stdDeviation', '3')
+            .attr('flood-color', 'rgba(0,0,0,0.5)');
+
+        this.g = this.svg.append('g');
+        this.linkGroup = this.g.append('g').attr('class', 'links-layer');
+        this.nodeGroup = this.g.append('g').attr('class', 'nodes-layer');
+
         this.zoom = d3.zoom()
-            .scaleExtent([0.1, 4])
+            .scaleExtent([0.05, 5])
             .on('zoom', (event) => {
                 this.g.attr('transform', event.transform);
             });
-
         this.svg.call(this.zoom);
-
-        // Main group
-        this.g = this.svg.append('g')
-            .attr('class', 'tree-group');
-
-        // Arrow marker for links
-        this.svg.append('defs').append('marker')
-            .attr('id', 'arrow')
-            .attr('viewBox', '0 -5 10 10')
-            .attr('refX', 20)
-            .attr('refY', 0)
-            .attr('markerWidth', 6)
-            .attr('markerHeight', 6)
-            .attr('orient', 'auto')
-            .append('path')
-            .attr('d', 'M0,-5L10,0L0,5')
-            .attr('fill', '#6e7681');
     }
 
     render(treeData) {
         this.root = d3.hierarchy(treeData);
-
-        // Collapse children beyond depth 2 initially
+        // Collapse nodes beyond depth 2 (show company->first gen by default)
         this.root.descendants().forEach(d => {
-            if (d.depth > 1 && d.children) {
+            if (d.depth > 2 && d.children) {
                 d._children = d.children;
                 d.children = null;
             }
         });
-
-        // Build node map for lookup
-        this.root.descendants().forEach(d => {
-            this.nodeMap.set(d.data.id, d);
-        });
-
+        this.root.descendants().forEach(d => this.nodeMap.set(d.data.id, d));
         this.update(this.root);
-
-        // Initial zoom to fit
-        setTimeout(() => this.zoomFit(), 100);
+        setTimeout(() => this.zoomFit(), 150);
     }
 
     update(source) {
-        const width = this.container.clientWidth;
-        const height = this.container.clientHeight;
-
-        // Count visible nodes to calculate spacing
-        const nodes = this.root.descendants();
-        const leaves = this.root.leaves();
-        const treeHeight = Math.max(400, leaves.length * 28);
-        const treeWidth = Math.max(600, (this.root.height + 1) * 220);
-
-        // Tree layout
-        this.treeLayout = d3.tree().size([treeHeight, treeWidth]);
-        this.treeLayout(this.root);
-
         const allNodes = this.root.descendants();
         const allLinks = this.root.links();
 
-        // ===== LINKS =====
-        const linkSelection = this.g.selectAll('.link')
+        // Better spacing
+        const leaves = allNodes.filter(d => !d.children).length;
+        const treeHeight = Math.max(500, leaves * 42);
+        const treeWidth = Math.max(800, (this.root.height + 1) * 280);
+
+        const treeLayout = d3.tree()
+            .size([treeHeight, treeWidth])
+            .separation((a, b) => a.parent === b.parent ? 1 : 1.4);
+        treeLayout(this.root);
+
+        // ===== Links =====
+        const link = this.linkGroup.selectAll('.link')
             .data(allLinks, d => d.target.data.id);
 
-        const linkEnter = linkSelection.enter()
-            .insert('path', 'g')
+        const linkEnter = link.enter()
+            .append('path')
             .attr('class', d => `link ${d.target.data._relType || 'base'}`)
-            .attr('d', () => {
+            .attr('fill', 'none')
+            .attr('stroke', d => this.getLinkColor(d))
+            .attr('stroke-width', d => this.getLinkWidth(d))
+            .attr('stroke-opacity', 0.55)
+            .attr('d', d => {
                 const o = { x: source.x0 || source.x, y: source.y0 || source.y };
-                return this.diagonal({ x: o.x, y: o.y }, { x: o.x, y: o.y });
+                return this.diagonal(o, o);
             });
 
-        const linkUpdate = linkEnter.merge(linkSelection);
-        linkUpdate.transition().duration(this.duration)
+        link.merge(linkEnter)
+            .transition()
+            .duration(this.duration)
             .attr('d', d => this.diagonal(d.source, d.target))
-            .attr('class', d => `link ${d.target.data._relType || 'base'}`);
+            .attr('stroke', d => this.getLinkColor(d))
+            .attr('stroke-width', d => this.getLinkWidth(d));
 
-        linkSelection.exit().transition().duration(this.duration)
-            .attr('d', () => {
+        link.exit()
+            .transition()
+            .duration(this.duration)
+            .attr('stroke-opacity', 0)
+            .attr('d', d => {
                 const o = { x: source.x, y: source.y };
-                return this.diagonal({ x: o.x, y: o.y }, { x: o.x, y: o.y });
+                return this.diagonal(o, o);
             })
             .remove();
 
-        // ===== NODES =====
-        const nodeSelection = this.g.selectAll('.node')
+        // ===== Nodes =====
+        const node = this.nodeGroup.selectAll('.node')
             .data(allNodes, d => d.data.id);
 
-        const nodeEnter = nodeSelection.enter()
+        const self = this;
+
+        const nodeEnter = node.enter()
             .append('g')
-            .attr('class', 'node')
-            .attr('transform', () => `translate(${source.y0 || source.y},${source.x0 || source.x})`)
+            .attr('class', d => `node ${d.data.id === '__root__' ? 'root-node' : ''}`)
+            .attr('data-id', d => d.data.id)
+            .attr('transform', d => `translate(${source.y0 || source.y},${source.x0 || source.x})`)
+            .style('cursor', d => d.data.id === '__root__' ? 'default' : 'pointer')
             .on('click', (event, d) => {
                 if (d.data.id === '__root__') return;
                 event.stopPropagation();
-                if (event.detail === 2) {
-                    // Double click: toggle children
-                    this.toggleNode(d);
-                } else {
-                    // Single click: select
-                    this.app.selectModel(d.data.id);
-                }
+                this.app.selectModel(d.data.id);
             })
-            .on('mouseover', (event, d) => {
+            .on('dblclick', (event, d) => {
+                event.stopPropagation();
+                this.toggleNode(d);
+            })
+            .on('mouseover', function(event, d) {
                 if (d.data.id === '__root__') return;
-                this.showTooltip(event, d);
+                self.showTooltip(event, d);
+                d3.select(this).select('.node-outer')
+                    .transition().duration(200)
+                    .attr('r', self.getNodeRadius(d) + 4)
+                    .attr('stroke-opacity', 1);
+                d3.select(this).select('.node-label')
+                    .transition().duration(200)
+                    .style('fill', '#ffffff');
             })
-            .on('mouseout', () => this.hideTooltip());
+            .on('mouseout', function(event, d) {
+                self.hideTooltip();
+                d3.select(this).select('.node-outer')
+                    .transition().duration(300)
+                    .attr('r', self.getNodeRadius(d))
+                    .attr('stroke-opacity', 0.7);
+                d3.select(this).select('.node-label')
+                    .transition().duration(300)
+                    .style('fill', '#c9d1d9');
+            });
 
-        // Node circle
+        // Outer glow ring
         nodeEnter.append('circle')
+            .attr('class', 'node-glow')
             .attr('r', 0)
             .attr('fill', d => this.getNodeColor(d))
-            .attr('stroke', d => this.getNodeStroke(d))
-            .attr('stroke-width', d => d.data.id === '__root__' ? 0 : 2)
+            .attr('opacity', 0.15)
+            .attr('filter', 'url(#node-glow)');
+
+        // Main node circle
+        nodeEnter.append('circle')
+            .attr('class', 'node-outer')
+            .attr('r', 0)
+            .attr('fill', d => {
+                if (d.data.id === '__root__') return 'transparent';
+                return this.darken(this.getNodeColor(d), 0.5);
+            })
+            .attr('stroke', d => this.getNodeColor(d))
+            .attr('stroke-width', d => d.data.id === '__root__' ? 0 : 2.5)
+            .attr('stroke-opacity', 0.7)
             .attr('stroke-dasharray', d => this.getStrokeDash(d));
 
-        // Node label
-        nodeEnter.append('text')
-            .attr('dy', '0.31em')
-            .attr('x', d => (d.children || d._children) ? -14 : 14)
-            .attr('text-anchor', d => (d.children || d._children) ? 'end' : 'start')
-            .text(d => d.data.id === '__root__' ? '' : d.data.name)
-            .style('font-size', d => d.depth === 0 ? '0px' : '11px');
+        // Inner bright dot
+        nodeEnter.append('circle')
+            .attr('class', 'node-inner')
+            .attr('r', 0)
+            .attr('fill', d => this.getNodeColor(d))
+            .attr('opacity', 0.9);
 
-        // Expand/collapse indicator
+        // Company initial inside larger nodes
         nodeEnter.append('text')
-            .attr('class', 'node-badge')
-            .attr('dy', '0.31em')
-            .attr('x', 0)
+            .attr('class', 'node-icon')
+            .attr('dy', '0.35em')
             .attr('text-anchor', 'middle')
-            .style('font-size', '8px')
+            .style('font-size', '0px')
+            .style('font-weight', '700')
             .style('fill', '#fff')
             .style('pointer-events', 'none')
             .text(d => {
-                if (d.data.id === '__root__') return '';
-                return d._children ? `+${d._children.length}` : '';
+                if (d.data.id === '__root__' || !d.data.data) return '';
+                const r = this.getNodeRadius(d);
+                if (r < 12) return '';
+                const name = d.data.data.shortName || d.data.data.name || '';
+                return name.charAt(0).toUpperCase();
             });
 
-        // Update
-        const nodeUpdate = nodeEnter.merge(nodeSelection);
-        nodeUpdate.transition().duration(this.duration)
+        // Label
+        nodeEnter.append('text')
+            .attr('class', 'node-label')
+            .attr('dy', '0.35em')
+            .attr('x', d => d.children || d._children ? -20 : 20)
+            .attr('text-anchor', d => d.children || d._children ? 'end' : 'start')
+            .text(d => d.data.id === '__root__' ? '' : (d.data.data?.shortName || d.data.name))
+            .style('font-size', d => d.depth <= 1 ? '13px' : '12px')
+            .style('font-weight', d => d.depth <= 1 ? '600' : '400')
+            .style('font-family', "'JetBrains Mono', monospace")
+            .style('fill', '#c9d1d9')
+            .style('paint-order', 'stroke')
+            .style('stroke', '#0d1117')
+            .style('stroke-width', '3px')
+            .style('pointer-events', 'none');
+
+        // Collapsed-children badge
+        nodeEnter.each(function(d) {
+            if (d._children && d._children.length > 0) {
+                const g = d3.select(this);
+                const r = self.getNodeRadius(d);
+                g.append('rect')
+                    .attr('class', 'badge-bg')
+                    .attr('x', r + 2).attr('y', -r - 4)
+                    .attr('width', 22).attr('height', 14)
+                    .attr('rx', 7)
+                    .attr('fill', self.getNodeColor(d))
+                    .attr('opacity', 0.85);
+                g.append('text')
+                    .attr('class', 'badge')
+                    .attr('x', r + 13).attr('y', -r + 5)
+                    .attr('text-anchor', 'middle')
+                    .text(`+${d._children.length}`)
+                    .style('font-size', '9px')
+                    .style('font-weight', '700')
+                    .style('fill', '#fff')
+                    .style('pointer-events', 'none');
+            }
+        });
+
+        // ===== Transition existing nodes =====
+        const nodeUpdate = node.merge(nodeEnter)
+            .transition()
+            .duration(this.duration)
             .attr('transform', d => `translate(${d.y},${d.x})`);
 
-        nodeUpdate.select('circle')
+        nodeUpdate.select('.node-glow')
+            .attr('r', d => d.data.id === '__root__' ? 0 : this.getNodeRadius(d) + 8);
+
+        nodeUpdate.select('.node-outer')
             .attr('r', d => d.data.id === '__root__' ? 0 : this.getNodeRadius(d))
-            .attr('fill', d => this.getNodeColor(d))
-            .attr('stroke', d => this.getNodeStroke(d))
-            .attr('stroke-dasharray', d => this.getStrokeDash(d));
+            .attr('fill', d => {
+                if (d.data.id === '__root__') return 'transparent';
+                return this.darken(this.getNodeColor(d), 0.5);
+            })
+            .attr('stroke', d => this.getNodeColor(d));
 
-        nodeUpdate.select('text:not(.node-badge)')
-            .attr('x', d => (d.children || d._children) ? -14 : 14)
-            .attr('text-anchor', d => (d.children || d._children) ? 'end' : 'start');
+        nodeUpdate.select('.node-inner')
+            .attr('r', d => d.data.id === '__root__' ? 0 : this.getNodeRadius(d) * 0.45);
 
-        nodeUpdate.select('.node-badge')
-            .text(d => {
-                if (d.data.id === '__root__') return '';
-                return d._children ? `+${d._children.length}` : '';
+        nodeUpdate.select('.node-icon')
+            .style('font-size', d => {
+                const r = this.getNodeRadius(d);
+                return r >= 12 ? `${Math.round(r * 0.85)}px` : '0px';
             });
 
-        // Exit
-        const nodeExit = nodeSelection.exit().transition().duration(this.duration)
-            .attr('transform', () => `translate(${source.y},${source.x})`)
+        nodeUpdate.select('.node-label')
+            .attr('x', d => d.children || d._children ? -20 : 20)
+            .attr('text-anchor', d => d.children || d._children ? 'end' : 'start');
+
+        // Rebuild badges on update
+        this.nodeGroup.selectAll('.node').each(function(d) {
+            const g = d3.select(this);
+            g.selectAll('.badge, .badge-bg').remove();
+            if (d._children && d._children.length > 0) {
+                const r = self.getNodeRadius(d);
+                g.append('rect')
+                    .attr('class', 'badge-bg')
+                    .attr('x', r + 2).attr('y', -r - 4)
+                    .attr('width', 22).attr('height', 14)
+                    .attr('rx', 7)
+                    .attr('fill', self.getNodeColor(d))
+                    .attr('opacity', 0.85);
+                g.append('text')
+                    .attr('class', 'badge')
+                    .attr('x', r + 13).attr('y', -r + 5)
+                    .attr('text-anchor', 'middle')
+                    .text(`+${d._children.length}`)
+                    .style('font-size', '9px')
+                    .style('font-weight', '700')
+                    .style('fill', '#fff')
+                    .style('pointer-events', 'none');
+            }
+        });
+
+        // ===== Exit =====
+        const nodeExit = node.exit()
+            .transition()
+            .duration(this.duration)
+            .attr('transform', d => `translate(${source.y},${source.x})`)
+            .style('opacity', 0)
             .remove();
-        nodeExit.select('circle').attr('r', 0);
-        nodeExit.select('text').style('fill-opacity', 0);
+
+        nodeExit.select('.node-outer').attr('r', 0);
+        nodeExit.select('.node-glow').attr('r', 0);
+        nodeExit.select('.node-inner').attr('r', 0);
 
         // Store positions for transitions
         allNodes.forEach(d => {
@@ -206,10 +329,23 @@ export class TreeView {
     }
 
     diagonal(s, d) {
-        return `M ${s.y} ${s.x}
-                C ${(s.y + d.y) / 2} ${s.x},
-                  ${(s.y + d.y) / 2} ${d.x},
-                  ${d.y} ${d.x}`;
+        const midY = (s.y + d.y) / 2;
+        return `M${s.y},${s.x} C${midY},${s.x} ${midY},${d.x} ${d.y},${d.x}`;
+    }
+
+    getLinkColor(d) {
+        if (d.source.data.id === '__root__') {
+            return this.getNodeColor(d.target);
+        }
+        return this.getNodeColor(d.source);
+    }
+
+    getLinkWidth(d) {
+        const depth = d.source.depth;
+        if (depth === 0) return 3;
+        if (depth === 1) return 2.5;
+        if (depth === 2) return 2;
+        return 1.5;
     }
 
     getNodeColor(d) {
@@ -218,26 +354,34 @@ export class TreeView {
         return this.app.getCompanyColor(company);
     }
 
+    darken(hex, factor) {
+        if (!hex || hex === 'transparent') return hex;
+        hex = hex.replace('#', '');
+        if (hex.length !== 6) return hex;
+        const r = Math.round(parseInt(hex.substring(0, 2), 16) * factor);
+        const g = Math.round(parseInt(hex.substring(2, 4), 16) * factor);
+        const b = Math.round(parseInt(hex.substring(4, 6), 16) * factor);
+        return `rgb(${r},${g},${b})`;
+    }
+
     getNodeStroke(d) {
         if (d.data.id === '__root__') return 'none';
-        const lt = d.data.data?.licenseType;
-        if (lt === 'open-source') return this.getNodeColor(d);
-        if (lt === 'open-weight') return this.getNodeColor(d);
         return this.getNodeColor(d);
     }
 
     getStrokeDash(d) {
         const lt = d.data.data?.licenseType;
-        if (lt === 'closed-source') return '3 2';
-        if (lt === 'open-weight') return '5 3';
+        if (lt === 'closed-source') return '4 3';
+        if (lt === 'open-weight') return '6 3';
         return 'none';
     }
 
     getNodeRadius(d) {
+        if (d.data.id === '__root__') return 0;
         const params = d.data.data?.parametersRaw;
         if (!params) return this.nodeRadius;
         const logSize = Math.log10(params);
-        return Math.max(5, Math.min(16, logSize * 1.2));
+        return Math.max(8, Math.min(22, logSize * 2));
     }
 
     toggleNode(d) {
@@ -278,13 +422,11 @@ export class TreeView {
     }
 
     highlightModel(modelId) {
-        // Remove previous highlights
-        this.g.selectAll('.node').classed('selected', false).classed('dimmed', false);
-        this.g.selectAll('.link').classed('dimmed', false);
+        this.nodeGroup.selectAll('.node').classed('selected', false).classed('dimmed', false);
+        this.linkGroup.selectAll('.link').classed('dimmed', false).classed('highlighted', false);
 
         if (!modelId) return;
 
-        // Get the ancestors and descendants of selected node
         const node = this.nodeMap.get(modelId);
         if (!node) return;
 
@@ -305,21 +447,24 @@ export class TreeView {
         };
         addChildren(node);
 
-        // Dim unrelated
-        this.g.selectAll('.node')
+        this.nodeGroup.selectAll('.node')
             .classed('dimmed', d => !relatedIds.has(d.data.id))
             .classed('selected', d => d.data.id === modelId);
 
-        this.g.selectAll('.link')
-            .classed('dimmed', d => !relatedIds.has(d.source.data.id) || !relatedIds.has(d.target.data.id));
+        // Boost glow on selected
+        this.nodeGroup.selectAll('.node.selected .node-glow')
+            .attr('opacity', 0.4)
+            .attr('filter', 'url(#node-glow-strong)');
+
+        this.linkGroup.selectAll('.link')
+            .classed('dimmed', d => !relatedIds.has(d.source.data.id) || !relatedIds.has(d.target.data.id))
+            .classed('highlighted', d => relatedIds.has(d.source.data.id) && relatedIds.has(d.target.data.id));
     }
 
     centerOnModel(modelId) {
-        // First ensure the node is visible (expand parents)
         const node = this.nodeMap.get(modelId);
         if (!node) return;
 
-        // Expand ancestors
         let curr = node;
         const toExpand = [];
         while (curr.parent) {
@@ -334,7 +479,6 @@ export class TreeView {
         });
         this.update(this.root);
 
-        // Center after update
         setTimeout(() => {
             const updatedNode = this.nodeMap.get(modelId);
             if (!updatedNode) return;
@@ -355,15 +499,22 @@ export class TreeView {
         const model = d.data.data;
         if (!model) return;
 
+        const color = this.app.getCompanyColor(model.company);
         this.tooltip.innerHTML = `
-            <div class="tooltip-name">${model.shortName || model.name}</div>
-            <div class="tooltip-company" style="color: ${this.app.getCompanyColor(model.company)}">${model.company}</div>
-            <div class="tooltip-meta">${model.parameters || ''} · ${model.releaseDate || ''}</div>
+            <div class="tooltip-header" style="border-left: 3px solid ${color}; padding-left: 8px;">
+                <div class="tooltip-name">${model.shortName || model.name}</div>
+                <div class="tooltip-company" style="color: ${color}">${model.company}</div>
+            </div>
+            <div class="tooltip-meta">
+                ${model.parameters ? `<span class="tooltip-tag">${model.parameters}</span>` : ''}
+                ${model.releaseDate ? `<span class="tooltip-tag">${model.releaseDate}</span>` : ''}
+                ${model.modality ? `<span class="tooltip-tag">${model.modality}</span>` : ''}
+            </div>
         `;
 
         const rect = this.container.getBoundingClientRect();
-        const x = event.clientX - rect.left + 12;
-        const y = event.clientY - rect.top - 10;
+        const x = event.clientX - rect.left + 16;
+        const y = event.clientY - rect.top - 12;
 
         this.tooltip.style.left = x + 'px';
         this.tooltip.style.top = y + 'px';
@@ -388,12 +539,12 @@ export class TreeView {
 
         const width = this.container.clientWidth;
         const height = this.container.clientHeight;
-        const padding = 60;
+        const padding = 80;
 
         const scale = Math.min(
             (width - padding * 2) / bounds.width,
             (height - padding * 2) / bounds.height,
-            1.5
+            1.2
         );
 
         const tx = width / 2 - (bounds.x + bounds.width / 2) * scale;
@@ -405,8 +556,8 @@ export class TreeView {
 
     switchView(view) {
         this.currentView = view;
-        // For MVP, we just re-render the same tree; radial can be added later
-        this.g.selectAll('*').remove();
+        this.linkGroup.selectAll('*').remove();
+        this.nodeGroup.selectAll('*').remove();
         this.nodeMap.clear();
 
         if (view === 'radial') {
@@ -414,14 +565,14 @@ export class TreeView {
         } else {
             this.root = d3.hierarchy(this.app.treeData);
             this.root.descendants().forEach(d => {
-                if (d.depth > 1 && d.children) {
+                if (d.depth > 2 && d.children) {
                     d._children = d.children;
                     d.children = null;
                 }
             });
             this.root.descendants().forEach(d => this.nodeMap.set(d.data.id, d));
             this.update(this.root);
-            setTimeout(() => this.zoomFit(), 100);
+            setTimeout(() => this.zoomFit(), 150);
         }
     }
 
@@ -431,7 +582,7 @@ export class TreeView {
 
         const width = this.container.clientWidth;
         const height = this.container.clientHeight;
-        const radius = Math.min(width, height) / 2 - 80;
+        const radius = Math.min(width, height) / 2 - 100;
 
         const tree = d3.tree()
             .size([2 * Math.PI, radius])
@@ -439,57 +590,92 @@ export class TreeView {
 
         tree(this.root);
 
+        const self = this;
+
         // Links
-        this.g.selectAll('.link')
+        this.linkGroup.selectAll('.link')
             .data(this.root.links())
             .enter()
             .append('path')
             .attr('class', d => `link ${d.target.data._relType || 'base'}`)
+            .attr('fill', 'none')
+            .attr('stroke', d => this.getLinkColor(d))
+            .attr('stroke-width', d => this.getLinkWidth(d))
+            .attr('stroke-opacity', 0.5)
             .attr('d', d3.linkRadial()
                 .angle(d => d.x)
                 .radius(d => d.y));
 
         // Nodes
-        const nodes = this.g.selectAll('.node')
+        const nodes = this.nodeGroup.selectAll('.node')
             .data(this.root.descendants())
             .enter()
             .append('g')
             .attr('class', 'node')
+            .attr('data-id', d => d.data.id)
             .attr('transform', d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`)
+            .style('cursor', d => d.data.id === '__root__' ? 'default' : 'pointer')
             .on('click', (event, d) => {
                 if (d.data.id === '__root__') return;
                 this.app.selectModel(d.data.id);
             })
-            .on('mouseover', (event, d) => {
+            .on('mouseover', function(event, d) {
                 if (d.data.id === '__root__') return;
-                this.showTooltip(event, d);
+                self.showTooltip(event, d);
+                d3.select(this).select('.node-outer')
+                    .transition().duration(200)
+                    .attr('r', self.getNodeRadius(d) + 3);
             })
-            .on('mouseout', () => this.hideTooltip());
+            .on('mouseout', function(event, d) {
+                self.hideTooltip();
+                d3.select(this).select('.node-outer')
+                    .transition().duration(300)
+                    .attr('r', self.getNodeRadius(d));
+            });
 
         nodes.append('circle')
-            .attr('r', d => d.data.id === '__root__' ? 0 : this.getNodeRadius(d))
+            .attr('class', 'node-glow')
+            .attr('r', d => d.data.id === '__root__' ? 0 : this.getNodeRadius(d) + 6)
             .attr('fill', d => this.getNodeColor(d))
-            .attr('stroke', d => this.getNodeStroke(d))
+            .attr('opacity', 0.12)
+            .attr('filter', 'url(#node-glow)');
+
+        nodes.append('circle')
+            .attr('class', 'node-outer')
+            .attr('r', d => d.data.id === '__root__' ? 0 : this.getNodeRadius(d))
+            .attr('fill', d => this.darken(this.getNodeColor(d), 0.5))
+            .attr('stroke', d => this.getNodeColor(d))
             .attr('stroke-width', 2)
             .attr('stroke-dasharray', d => this.getStrokeDash(d));
 
+        nodes.append('circle')
+            .attr('class', 'node-inner')
+            .attr('r', d => d.data.id === '__root__' ? 0 : this.getNodeRadius(d) * 0.45)
+            .attr('fill', d => this.getNodeColor(d))
+            .attr('opacity', 0.9);
+
         nodes.append('text')
-            .attr('dy', '0.31em')
-            .attr('x', d => d.x < Math.PI === !d.children ? 10 : -10)
+            .attr('class', 'node-label')
+            .attr('dy', '0.35em')
+            .attr('x', d => d.x < Math.PI === !d.children ? 16 : -16)
             .attr('text-anchor', d => d.x < Math.PI === !d.children ? 'start' : 'end')
             .attr('transform', d => d.x >= Math.PI ? 'rotate(180)' : null)
-            .text(d => d.data.id === '__root__' ? '' : d.data.name)
-            .style('font-size', '10px');
+            .text(d => d.data.id === '__root__' ? '' : (d.data.data?.shortName || d.data.name))
+            .style('font-size', '11px')
+            .style('font-family', "'JetBrains Mono', monospace")
+            .style('fill', '#c9d1d9')
+            .style('paint-order', 'stroke')
+            .style('stroke', '#0d1117')
+            .style('stroke-width', '3px');
 
-        // Center the radial tree
         const transform = d3.zoomIdentity
             .translate(width / 2, height / 2)
-            .scale(0.8);
+            .scale(0.75);
         this.svg.call(this.zoom.transform, transform);
     }
 
     applyFilters(filters) {
-        this.g.selectAll('.node').each(function(d) {
+        this.nodeGroup.selectAll('.node').each(function(d) {
             if (d.data.id === '__root__') return;
             const model = d.data.data;
             if (!model) return;
@@ -513,7 +699,7 @@ export class TreeView {
             d3.select(this).classed('dimmed', !visible);
         });
 
-        this.g.selectAll('.link').each(function(d) {
+        this.linkGroup.selectAll('.link').each(function(d) {
             const sourceVisible = !d3.select(`.node[data-id="${d.source.data.id}"]`).classed('dimmed');
             const targetVisible = !d3.select(`.node[data-id="${d.target.data.id}"]`).classed('dimmed');
             d3.select(this).classed('dimmed', !sourceVisible || !targetVisible);
