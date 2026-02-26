@@ -67,13 +67,7 @@ export class TreeView {
 
     render(treeData) {
         this.root = d3.hierarchy(treeData);
-        // Collapse nodes beyond depth 2 (show company->first gen by default)
-        this.root.descendants().forEach(d => {
-            if (d.depth > 2 && d.children) {
-                d._children = d.children;
-                d.children = null;
-            }
-        });
+        // Show all nodes expanded by default (use Collapse All button to condense)
         this.root.descendants().forEach(d => this.nodeMap.set(d.data.id, d));
         this.update(this.root);
         setTimeout(() => this.zoomFit(), 150);
