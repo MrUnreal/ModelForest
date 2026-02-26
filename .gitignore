@@ -18,3 +18,4 @@ dist/
 
 # Scraped data (auto-generated, can be large)
 # data/scraped/huggingface.json
+.playwright-mcp/
