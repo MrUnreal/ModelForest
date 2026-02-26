@@ -1,23 +1,399 @@
 {
   "models": [
-    { "id": "microsoft/phi-1", "name": "Phi-1", "shortName": "Phi-1", "company": "Microsoft", "releaseDate": "2023-06-20", "parameters": "1.3B", "parametersRaw": 1300000000, "architecture": "PhiForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "code", "license": "mit", "licenseType": "open-source", "contextWindow": 2048, "tags": ["phi", "microsoft", "small"], "paperUrl": "https://arxiv.org/abs/2306.11644", "description": "Small model trained on textbook-quality data. Showed data quality > quantity.", "significance": "Pioneered 'textbook quality' data curation approach", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "microsoft/phi-1.5", "name": "Phi-1.5", "shortName": "Phi-1.5", "company": "Microsoft", "releaseDate": "2023-09-11", "parameters": "1.3B", "parametersRaw": 1300000000, "architecture": "PhiForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "mit", "licenseType": "open-source", "contextWindow": 2048, "tags": ["phi", "microsoft", "small"], "description": "Extended Phi-1 to natural language understanding tasks.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "microsoft/phi-2", "name": "Phi-2", "shortName": "Phi-2", "company": "Microsoft", "releaseDate": "2023-12-12", "parameters": "2.7B", "parametersRaw": 2700000000, "architecture": "PhiForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "mit", "licenseType": "open-source", "contextWindow": 2048, "tags": ["phi", "microsoft", "small"], "description": "2.7B model matching or exceeding 7B and 13B models on benchmarks.", "significance": "Proved small models can punch well above their weight class", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "microsoft/phi-3-mini", "name": "Phi-3 mini", "shortName": "Phi-3 mini", "company": "Microsoft", "releaseDate": "2024-04-23", "parameters": "3.8B", "parametersRaw": 3800000000, "architecture": "Phi3ForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "mit", "licenseType": "open-source", "contextWindow": 131072, "tags": ["phi", "microsoft", "small", "on-device"], "paperUrl": "https://arxiv.org/abs/2404.14219", "description": "3.8B model competitive with Mistral 7B and Mixtral 8x7B.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "microsoft/phi-3-small", "name": "Phi-3 small", "shortName": "Phi-3 small", "company": "Microsoft", "releaseDate": "2024-05-21", "parameters": "7B", "parametersRaw": 7000000000, "architecture": "Phi3ForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "mit", "licenseType": "open-source", "contextWindow": 131072, "tags": ["phi", "microsoft"], "description": "7B Phi-3 model.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "microsoft/phi-3-medium", "name": "Phi-3 medium", "shortName": "Phi-3 medium", "company": "Microsoft", "releaseDate": "2024-05-21", "parameters": "14B", "parametersRaw": 14000000000, "architecture": "Phi3ForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "mit", "licenseType": "open-source", "contextWindow": 131072, "tags": ["phi", "microsoft"], "description": "14B Phi-3 model competitive with much larger models.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "microsoft/phi-3-vision", "name": "Phi-3 Vision", "shortName": "Phi-3 Vision", "company": "Microsoft", "releaseDate": "2024-05-21", "parameters": "4.2B", "parametersRaw": 4200000000, "architecture": "Phi3VForCausalLM", "architectureFamily": "Transformer (Decoder-only, Multimodal)", "modality": "text+vision", "license": "mit", "licenseType": "open-source", "contextWindow": 131072, "tags": ["phi", "microsoft", "vision", "multimodal"], "description": "Multimodal Phi-3 with image understanding capabilities.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "microsoft/phi-4", "name": "Phi-4", "shortName": "Phi-4", "company": "Microsoft", "releaseDate": "2024-12-12", "parameters": "14B", "parametersRaw": 14000000000, "architecture": "Phi3ForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "mit", "licenseType": "open-source", "contextWindow": 16384, "tags": ["phi", "microsoft"], "paperUrl": "https://arxiv.org/abs/2412.08905", "description": "14B model excelling at STEM reasoning due to synthetic data innovations.", "significance": "Set new bar for small model STEM performance", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "microsoft/phi-4-mini", "name": "Phi-4 mini", "shortName": "Phi-4 mini", "company": "Microsoft", "releaseDate": "2025-02-27", "parameters": "3.8B", "parametersRaw": 3800000000, "architecture": "Phi3ForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "mit", "licenseType": "open-source", "contextWindow": 131072, "tags": ["phi", "microsoft", "small"], "description": "Compact Phi-4 for on-device and embedded applications.", "source": "curated", "lastVerified": "2025-06-15" }
+    {
+      "id": "microsoft/phi-1",
+      "name": "Phi-1",
+      "shortName": "Phi-1",
+      "company": "Microsoft",
+      "releaseDate": "2023-06-20",
+      "parameters": "1.3B",
+      "parametersRaw": 1300000000,
+      "architecture": "PhiForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "code",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 2048,
+      "tags": [
+        "phi",
+        "microsoft",
+        "small"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2306.11644",
+      "description": "Small model trained on textbook-quality data. Showed data quality > quantity.",
+      "significance": "Pioneered textbook quality data curation approach",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-1.5",
+      "name": "Phi-1.5",
+      "shortName": "Phi-1.5",
+      "company": "Microsoft",
+      "releaseDate": "2023-09-11",
+      "parameters": "1.3B",
+      "parametersRaw": 1300000000,
+      "architecture": "PhiForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 2048,
+      "tags": [
+        "phi",
+        "microsoft",
+        "small"
+      ],
+      "description": "Extended Phi-1 to natural language understanding tasks.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-2",
+      "name": "Phi-2",
+      "shortName": "Phi-2",
+      "company": "Microsoft",
+      "releaseDate": "2023-12-12",
+      "parameters": "2.7B",
+      "parametersRaw": 2700000000,
+      "architecture": "PhiForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 2048,
+      "tags": [
+        "phi",
+        "microsoft",
+        "small"
+      ],
+      "description": "2.7B model matching or exceeding 7B and 13B models on benchmarks.",
+      "significance": "Proved small models can punch well above their weight class",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-3-mini",
+      "name": "Phi-3 mini",
+      "shortName": "Phi-3 mini",
+      "company": "Microsoft",
+      "releaseDate": "2024-04-23",
+      "parameters": "3.8B",
+      "parametersRaw": 3800000000,
+      "architecture": "Phi3ForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "phi",
+        "microsoft",
+        "small",
+        "on-device"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2404.14219",
+      "description": "3.8B model competitive with Mistral 7B and Mixtral 8x7B.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-3-small",
+      "name": "Phi-3 small",
+      "shortName": "Phi-3 small",
+      "company": "Microsoft",
+      "releaseDate": "2024-05-21",
+      "parameters": "7B",
+      "parametersRaw": 7000000000,
+      "architecture": "Phi3ForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "phi",
+        "microsoft"
+      ],
+      "description": "7B Phi-3 model.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-3-medium",
+      "name": "Phi-3 medium",
+      "shortName": "Phi-3 medium",
+      "company": "Microsoft",
+      "releaseDate": "2024-05-21",
+      "parameters": "14B",
+      "parametersRaw": 14000000000,
+      "architecture": "Phi3ForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "phi",
+        "microsoft"
+      ],
+      "description": "14B Phi-3 model competitive with much larger models.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-3-vision",
+      "name": "Phi-3 Vision",
+      "shortName": "Phi-3 Vision",
+      "company": "Microsoft",
+      "releaseDate": "2024-05-21",
+      "parameters": "4.2B",
+      "parametersRaw": 4200000000,
+      "architecture": "Phi3VForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only, Multimodal)",
+      "modality": "text+vision",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "phi",
+        "microsoft",
+        "vision",
+        "multimodal"
+      ],
+      "description": "Multimodal Phi-3 with image understanding capabilities.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-3.5-mini",
+      "name": "Phi-3.5 mini",
+      "shortName": "Phi-3.5 mini",
+      "company": "Microsoft",
+      "releaseDate": "2024-08-20",
+      "parameters": "3.8B",
+      "parametersRaw": 3800000000,
+      "architecture": "Phi3ForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "phi",
+        "microsoft",
+        "small"
+      ],
+      "description": "Updated Phi-3 mini with improved multilingual support and long-context performance.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-3.5-moe",
+      "name": "Phi-3.5 MoE",
+      "shortName": "Phi-3.5 MoE",
+      "company": "Microsoft",
+      "releaseDate": "2024-08-20",
+      "parameters": "42B (6.6B active)",
+      "parametersRaw": 42000000000,
+      "architecture": "PhiMoEForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "phi",
+        "microsoft",
+        "moe"
+      ],
+      "description": "Mixture-of-Experts Phi model. 16 experts, 2 active per token. Competitive with larger dense models.",
+      "significance": "Microsoft first MoE model; efficient at 6.6B active params",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-3.5-vision",
+      "name": "Phi-3.5 Vision",
+      "shortName": "Phi-3.5 Vision",
+      "company": "Microsoft",
+      "releaseDate": "2024-08-20",
+      "parameters": "4.2B",
+      "parametersRaw": 4200000000,
+      "architecture": "Phi3VForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only, Multimodal)",
+      "modality": "text+vision",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "phi",
+        "microsoft",
+        "vision",
+        "multimodal"
+      ],
+      "description": "Updated multimodal Phi with multi-frame image and video understanding.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-4",
+      "name": "Phi-4",
+      "shortName": "Phi-4",
+      "company": "Microsoft",
+      "releaseDate": "2024-12-12",
+      "parameters": "14B",
+      "parametersRaw": 14000000000,
+      "architecture": "Phi3ForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 16384,
+      "tags": [
+        "phi",
+        "microsoft"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2412.08905",
+      "description": "14B model excelling at STEM reasoning due to synthetic data innovations.",
+      "significance": "Set new bar for small model STEM performance",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-4-mini",
+      "name": "Phi-4 mini",
+      "shortName": "Phi-4 mini",
+      "company": "Microsoft",
+      "releaseDate": "2025-02-27",
+      "parameters": "3.8B",
+      "parametersRaw": 3800000000,
+      "architecture": "Phi3ForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "phi",
+        "microsoft",
+        "small"
+      ],
+      "description": "Compact Phi-4 for on-device and embedded applications.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "microsoft/phi-4-multimodal",
+      "name": "Phi-4 Multimodal",
+      "shortName": "Phi-4 Multimodal",
+      "company": "Microsoft",
+      "releaseDate": "2025-02-27",
+      "parameters": "5.6B",
+      "parametersRaw": 5600000000,
+      "architecture": "Phi4MMForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only, Multimodal)",
+      "modality": "text+vision+audio",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "phi",
+        "microsoft",
+        "multimodal",
+        "vision",
+        "audio"
+      ],
+      "description": "Multimodal Phi-4 supporting text, vision, and audio inputs in a single small model.",
+      "significance": "First small model with text+vision+audio multimodal capabilities",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    }
   ],
   "relationships": [
-    { "parent": "microsoft/phi-1", "child": "microsoft/phi-1.5", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "microsoft/phi-1.5", "child": "microsoft/phi-2", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "microsoft/phi-2", "child": "microsoft/phi-3-mini", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "microsoft/phi-2", "child": "microsoft/phi-3-small", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "microsoft/phi-2", "child": "microsoft/phi-3-medium", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "microsoft/phi-3-mini", "child": "microsoft/phi-3-vision", "type": "multimodal-extension", "source": "curated", "confidence": "high" },
-    { "parent": "microsoft/phi-3-medium", "child": "microsoft/phi-4", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "microsoft/phi-4", "child": "microsoft/phi-4-mini", "type": "distillation", "source": "curated", "confidence": "high" }
+    {
+      "parent": "microsoft/phi-1",
+      "child": "microsoft/phi-1.5",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-1.5",
+      "child": "microsoft/phi-2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-2",
+      "child": "microsoft/phi-3-mini",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-2",
+      "child": "microsoft/phi-3-small",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-2",
+      "child": "microsoft/phi-3-medium",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-3-mini",
+      "child": "microsoft/phi-3-vision",
+      "type": "multimodal-extension",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-3-mini",
+      "child": "microsoft/phi-3.5-mini",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-3-medium",
+      "child": "microsoft/phi-3.5-moe",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-3-vision",
+      "child": "microsoft/phi-3.5-vision",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-3-medium",
+      "child": "microsoft/phi-4",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-4",
+      "child": "microsoft/phi-4-mini",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/phi-4",
+      "child": "microsoft/phi-4-multimodal",
+      "type": "multimodal-extension",
+      "source": "curated",
+      "confidence": "high"
+    }
   ]
 }

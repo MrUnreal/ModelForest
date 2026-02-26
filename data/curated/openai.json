@@ -14,7 +14,11 @@
       "license": "proprietary",
       "licenseType": "open-weight",
       "contextWindow": 512,
-      "tags": ["gpt", "openai", "pioneer"],
+      "tags": [
+        "gpt",
+        "openai",
+        "pioneer"
+      ],
       "paperUrl": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
       "description": "The original Generative Pre-trained Transformer. Demonstrated that pre-training on large text corpora followed by fine-tuning achieves strong NLP results.",
       "significance": "Pioneered the GPT approach: unsupervised pre-training + supervised fine-tuning",
@@ -35,7 +39,10 @@
       "license": "mit",
       "licenseType": "open-source",
       "contextWindow": 1024,
-      "tags": ["gpt", "openai"],
+      "tags": [
+        "gpt",
+        "openai"
+      ],
       "huggingfaceUrl": "https://huggingface.co/openai-community/gpt2",
       "paperUrl": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
       "description": "Scaled-up GPT with 1.5B parameters. Initially withheld due to misuse concerns.",
@@ -57,10 +64,86 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 2049,
-      "tags": ["gpt", "openai", "landmark"],
+      "tags": [
+        "gpt",
+        "openai",
+        "landmark"
+      ],
       "paperUrl": "https://arxiv.org/abs/2005.14165",
       "description": "175B parameter model demonstrating few-shot learning across many tasks.",
       "significance": "Proved that scale enables emergent few-shot abilities without fine-tuning",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "openai/codex",
+      "name": "Codex",
+      "shortName": "Codex",
+      "company": "OpenAI",
+      "releaseDate": "2021-08-10",
+      "parameters": "12B",
+      "parametersRaw": 12000000000,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "code",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 4096,
+      "tags": [
+        "openai",
+        "code"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2107.03374",
+      "description": "GPT-3 fine-tuned on code. Powered GitHub Copilot.",
+      "significance": "Launched AI-assisted coding era; powered GitHub Copilot",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "openai/dall-e-2",
+      "name": "DALL-E 2",
+      "shortName": "DALL-E 2",
+      "company": "OpenAI",
+      "releaseDate": "2022-04-06",
+      "parameters": "3.5B",
+      "parametersRaw": 3500000000,
+      "architecture": "DiffusionCLIP",
+      "architectureFamily": "Diffusion + CLIP",
+      "modality": "image",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "tags": [
+        "openai",
+        "image-generation",
+        "diffusion"
+      ],
+      "description": "Text-to-image model using CLIP embeddings and diffusion. Major quality leap over DALL-E 1.",
+      "significance": "Popularized AI art generation for mainstream audiences",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "openai/whisper",
+      "name": "Whisper",
+      "shortName": "Whisper",
+      "company": "OpenAI",
+      "releaseDate": "2022-09-21",
+      "parameters": "1.55B",
+      "parametersRaw": 1550000000,
+      "architecture": "TransformerEncoderDecoder",
+      "architectureFamily": "Transformer (Encoder-Decoder)",
+      "modality": "audio",
+      "license": "mit",
+      "licenseType": "open-source",
+      "tags": [
+        "openai",
+        "speech",
+        "asr"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2212.04356",
+      "huggingfaceUrl": "https://huggingface.co/openai/whisper-large-v3",
+      "description": "Robust speech recognition model trained on 680K hours of multilingual audio.",
+      "significance": "Set new standard for open-source speech recognition",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -78,7 +161,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 4096,
-      "tags": ["gpt", "openai", "rlhf"],
+      "tags": [
+        "gpt",
+        "openai",
+        "rlhf"
+      ],
       "description": "Improved GPT-3 trained with RLHF. Powered early ChatGPT.",
       "significance": "Introduced RLHF-based instruction following at scale",
       "source": "curated",
@@ -98,7 +185,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 16384,
-      "tags": ["gpt", "openai", "chat"],
+      "tags": [
+        "gpt",
+        "openai",
+        "chat"
+      ],
       "description": "Optimized and cheaper version of GPT-3.5 for the ChatGPT API.",
       "significance": "Made GPT-3.5-class performance accessible via affordable API",
       "source": "curated",
@@ -118,10 +209,37 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 4096,
-      "tags": ["gpt", "openai", "chat", "application"],
+      "tags": [
+        "gpt",
+        "openai",
+        "chat",
+        "application"
+      ],
       "blogUrl": "https://openai.com/blog/chatgpt",
       "description": "Conversational AI application built on GPT-3.5. Fastest consumer product to 100M users.",
       "significance": "Launched the AI chatbot revolution; fastest-growing consumer app in history",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "openai/dall-e-3",
+      "name": "DALL-E 3",
+      "shortName": "DALL-E 3",
+      "company": "OpenAI",
+      "releaseDate": "2023-10-03",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "DiffusionTransformer",
+      "architectureFamily": "Diffusion + Transformer",
+      "modality": "image",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "tags": [
+        "openai",
+        "image-generation"
+      ],
+      "description": "Third generation DALL-E with dramatically improved prompt following and text rendering.",
+      "significance": "First image generator with reliable text rendering in images",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -139,10 +257,15 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 8192,
-      "tags": ["gpt", "openai", "multimodal", "landmark"],
+      "tags": [
+        "gpt",
+        "openai",
+        "multimodal",
+        "landmark"
+      ],
       "paperUrl": "https://arxiv.org/abs/2303.08774",
       "blogUrl": "https://openai.com/research/gpt-4",
-      "description": "OpenAI's most capable model at launch. Multimodal (text+image input).",
+      "description": "OpenAI most capable model at launch. Multimodal (text+image input).",
       "significance": "Major leap in reasoning, coding, and multimodal understanding",
       "source": "curated",
       "lastVerified": "2025-06-15"
@@ -161,7 +284,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 128000,
-      "tags": ["gpt", "openai", "turbo"],
+      "tags": [
+        "gpt",
+        "openai",
+        "turbo"
+      ],
       "description": "Faster, cheaper GPT-4 with 128K context and knowledge cutoff of April 2024.",
       "significance": "Made GPT-4-class performance more accessible with larger context",
       "source": "curated",
@@ -181,7 +308,12 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 128000,
-      "tags": ["gpt", "openai", "omni", "multimodal"],
+      "tags": [
+        "gpt",
+        "openai",
+        "omni",
+        "multimodal"
+      ],
       "blogUrl": "https://openai.com/index/hello-gpt-4o/",
       "description": "Omni model capable of text, vision, and audio. 2x faster and 50% cheaper than GPT-4 Turbo.",
       "significance": "First natively multimodal GPT model (text+vision+audio)",
@@ -202,10 +334,37 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 128000,
-      "tags": ["gpt", "openai", "mini", "distillation"],
+      "tags": [
+        "gpt",
+        "openai",
+        "mini",
+        "distillation"
+      ],
       "blogUrl": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
       "description": "Small, fast, affordable model. Distilled from GPT-4o.",
       "significance": "Ultra-affordable GPT-4-class intelligence for the masses",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "openai/sora",
+      "name": "Sora",
+      "shortName": "Sora",
+      "company": "OpenAI",
+      "releaseDate": "2024-12-09",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "DiffusionTransformer",
+      "architectureFamily": "Diffusion Transformer (DiT)",
+      "modality": "video",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "tags": [
+        "openai",
+        "video-generation"
+      ],
+      "description": "Text-to-video generation model capable of creating realistic 1-minute videos.",
+      "significance": "Breakthrough in AI video generation quality and length",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -223,7 +382,10 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 1000000,
-      "tags": ["gpt", "openai"],
+      "tags": [
+        "gpt",
+        "openai"
+      ],
       "description": "GPT-4.1 with 1M token context window and improved coding capabilities.",
       "significance": "Pushed context window to 1M tokens",
       "source": "curated",
@@ -243,7 +405,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 1000000,
-      "tags": ["gpt", "openai", "mini"],
+      "tags": [
+        "gpt",
+        "openai",
+        "mini"
+      ],
       "description": "Smaller, faster variant of GPT-4.1.",
       "significance": "Affordable model with 1M context",
       "source": "curated",
@@ -263,7 +429,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 1000000,
-      "tags": ["gpt", "openai", "nano"],
+      "tags": [
+        "gpt",
+        "openai",
+        "nano"
+      ],
       "description": "Smallest GPT-4.1 variant, optimized for speed and cost.",
       "significance": "Ultra-lightweight GPT for edge use cases",
       "source": "curated",
@@ -283,9 +453,13 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 128000,
-      "tags": ["openai", "reasoning", "chain-of-thought"],
+      "tags": [
+        "openai",
+        "reasoning",
+        "chain-of-thought"
+      ],
       "blogUrl": "https://openai.com/index/learning-to-reason-with-llms/",
-      "description": "OpenAI's reasoning model that uses chain-of-thought at inference time.",
+      "description": "OpenAI reasoning model that uses chain-of-thought at inference time.",
       "significance": "Pioneered inference-time compute scaling for reasoning",
       "source": "curated",
       "lastVerified": "2025-06-15"
@@ -304,7 +478,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 128000,
-      "tags": ["openai", "reasoning", "mini"],
+      "tags": [
+        "openai",
+        "reasoning",
+        "mini"
+      ],
       "description": "Smaller, faster, cheaper version of o1 optimized for STEM reasoning.",
       "significance": "Affordable reasoning model for math, science, and coding",
       "source": "curated",
@@ -324,7 +502,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 128000,
-      "tags": ["openai", "reasoning", "pro"],
+      "tags": [
+        "openai",
+        "reasoning",
+        "pro"
+      ],
       "description": "Enhanced o1 with more compute for harder problems.",
       "significance": "Premium reasoning tier with extended thinking",
       "source": "curated",
@@ -344,7 +526,10 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 200000,
-      "tags": ["openai", "reasoning"],
+      "tags": [
+        "openai",
+        "reasoning"
+      ],
       "description": "Next-gen reasoning model succeeding o1.",
       "significance": "Advanced reasoning capabilities beyond o1",
       "source": "curated",
@@ -364,7 +549,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 200000,
-      "tags": ["openai", "reasoning", "mini"],
+      "tags": [
+        "openai",
+        "reasoning",
+        "mini"
+      ],
       "description": "Smaller reasoning model in the o3 family.",
       "significance": "Cost-effective reasoning model",
       "source": "curated",
@@ -384,7 +573,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 200000,
-      "tags": ["openai", "reasoning", "mini"],
+      "tags": [
+        "openai",
+        "reasoning",
+        "mini"
+      ],
       "description": "Latest compact reasoning model from OpenAI.",
       "significance": "Continued iteration on affordable reasoning",
       "source": "curated",
@@ -392,23 +585,167 @@
     }
   ],
   "relationships": [
-    { "parent": "openai/gpt-1", "child": "openai/gpt-2", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-2", "child": "openai/gpt-3", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-3", "child": "openai/gpt-3.5", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-3.5", "child": "openai/gpt-3.5-turbo", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-3.5", "child": "openai/chatgpt", "type": "finetune", "method": "RLHF", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-3", "child": "openai/gpt-4", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-4", "child": "openai/gpt-4-turbo", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-4", "child": "openai/gpt-4o", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-4o", "child": "openai/gpt-4o-mini", "type": "distillation", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-4", "child": "openai/gpt-4.1", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-4.1", "child": "openai/gpt-4.1-mini", "type": "distillation", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-4.1", "child": "openai/gpt-4.1-nano", "type": "distillation", "source": "curated", "confidence": "high" },
-    { "parent": "openai/gpt-4", "child": "openai/o1", "type": "base", "source": "curated", "confidence": "medium" },
-    { "parent": "openai/o1", "child": "openai/o1-mini", "type": "distillation", "source": "curated", "confidence": "high" },
-    { "parent": "openai/o1", "child": "openai/o1-pro", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/o1", "child": "openai/o3", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "openai/o3", "child": "openai/o3-mini", "type": "distillation", "source": "curated", "confidence": "high" },
-    { "parent": "openai/o3", "child": "openai/o4-mini", "type": "base", "source": "curated", "confidence": "medium" }
+    {
+      "parent": "openai/gpt-1",
+      "child": "openai/gpt-2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-2",
+      "child": "openai/gpt-3",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-3",
+      "child": "openai/codex",
+      "type": "finetune",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-3",
+      "child": "openai/dall-e-2",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "medium"
+    },
+    {
+      "parent": "openai/gpt-3",
+      "child": "openai/whisper",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "medium"
+    },
+    {
+      "parent": "openai/gpt-3",
+      "child": "openai/gpt-3.5",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-3.5",
+      "child": "openai/gpt-3.5-turbo",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-3.5",
+      "child": "openai/chatgpt",
+      "type": "finetune",
+      "method": "RLHF",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/dall-e-2",
+      "child": "openai/dall-e-3",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-3",
+      "child": "openai/gpt-4",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-4",
+      "child": "openai/gpt-4-turbo",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-4",
+      "child": "openai/gpt-4o",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-4o",
+      "child": "openai/gpt-4o-mini",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-4o",
+      "child": "openai/sora",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "medium"
+    },
+    {
+      "parent": "openai/gpt-4",
+      "child": "openai/gpt-4.1",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-4.1",
+      "child": "openai/gpt-4.1-mini",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-4.1",
+      "child": "openai/gpt-4.1-nano",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/gpt-4",
+      "child": "openai/o1",
+      "type": "base",
+      "source": "curated",
+      "confidence": "medium"
+    },
+    {
+      "parent": "openai/o1",
+      "child": "openai/o1-mini",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/o1",
+      "child": "openai/o1-pro",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/o1",
+      "child": "openai/o3",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/o3",
+      "child": "openai/o3-mini",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "openai/o3",
+      "child": "openai/o4-mini",
+      "type": "base",
+      "source": "curated",
+      "confidence": "medium"
+    }
   ]
 }

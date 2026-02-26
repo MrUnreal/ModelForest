@@ -40,7 +40,7 @@ class App {
 
     async loadData() {
         const basePath = this.getBasePath();
-        const files = ['openai', 'meta', 'google', 'anthropic', 'mistral', 'deepseek', 'microsoft', 'alibaba', 'stability'];
+        const files = ['openai', 'meta', 'google', 'anthropic', 'mistral', 'deepseek', 'microsoft', 'alibaba', 'stability', 'xai'];
 
         const results = await Promise.all([
             ...files.map(f => fetch(`${basePath}data/curated/${f}.json`).then(r => r.json())),

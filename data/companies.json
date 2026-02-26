@@ -16,6 +16,7 @@
     { "id": "compvis", "name": "CompVis (LMU Munich)", "color": "#009CDE", "founded": "2018", "hqLocation": "Munich, Germany" },
     { "id": "runway", "name": "Runway", "color": "#FF4081", "founded": "2018", "hqLocation": "New York, NY" },
     { "id": "bfl", "name": "Black Forest Labs", "color": "#2D5016", "founded": "2024", "hqLocation": "Freiburg, Germany" },
-    { "id": "answerai", "name": "Answer.AI", "color": "#22C55E", "founded": "2023", "hqLocation": "San Francisco, CA" }
+    { "id": "answerai", "name": "Answer.AI", "color": "#22C55E", "founded": "2023", "hqLocation": "San Francisco, CA" },
+    { "id": "xai", "name": "xAI", "color": "#E8E8E8", "founded": "2023", "hqLocation": "San Francisco, CA" }
   ]
 }

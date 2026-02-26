@@ -1,119 +1,422 @@
 {
   "models": [
     {
-      "id": "anthropic/claude-1", "name": "Claude 1", "shortName": "Claude 1", "company": "Anthropic",
-      "releaseDate": "2023-03-14", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 9000, "tags": ["claude", "anthropic"],
-      "description": "Anthropic's first publicly available AI assistant, designed to be helpful, harmless, and honest.",
-      "significance": "Introduced Constitutional AI approach to alignment", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-1",
+      "name": "Claude 1",
+      "shortName": "Claude 1",
+      "company": "Anthropic",
+      "releaseDate": "2023-03-14",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 9000,
+      "tags": [
+        "claude",
+        "anthropic"
+      ],
+      "description": "Anthropic first publicly available AI assistant, designed to be helpful, harmless, and honest.",
+      "significance": "Introduced Constitutional AI approach to alignment",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-1.3", "name": "Claude 1.3", "shortName": "Claude 1.3", "company": "Anthropic",
-      "releaseDate": "2023-06-01", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 100000, "tags": ["claude", "anthropic", "long-context"],
-      "description": "Updated Claude with 100K token context window.", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-instant-1.2",
+      "name": "Claude Instant 1.2",
+      "shortName": "Claude Instant",
+      "company": "Anthropic",
+      "releaseDate": "2023-08-09",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 100000,
+      "tags": [
+        "claude",
+        "anthropic",
+        "fast",
+        "affordable"
+      ],
+      "description": "Faster, cheaper Claude variant optimized for speed. Offered lower latency at reduced cost.",
+      "significance": "First lightweight Claude tier for cost-sensitive applications",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-2", "name": "Claude 2", "shortName": "Claude 2", "company": "Anthropic",
-      "releaseDate": "2023-07-11", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 100000, "tags": ["claude", "anthropic"],
-      "description": "Second generation Claude with improved coding and reasoning.", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-1.3",
+      "name": "Claude 1.3",
+      "shortName": "Claude 1.3",
+      "company": "Anthropic",
+      "releaseDate": "2023-06-01",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 100000,
+      "tags": [
+        "claude",
+        "anthropic",
+        "long-context"
+      ],
+      "description": "Updated Claude with 100K token context window.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-2.1", "name": "Claude 2.1", "shortName": "Claude 2.1", "company": "Anthropic",
-      "releaseDate": "2023-11-21", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 200000, "tags": ["claude", "anthropic"],
-      "description": "Claude 2.1 with 200K context and reduced hallucination rates.", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-2",
+      "name": "Claude 2",
+      "shortName": "Claude 2",
+      "company": "Anthropic",
+      "releaseDate": "2023-07-11",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 100000,
+      "tags": [
+        "claude",
+        "anthropic"
+      ],
+      "description": "Second generation Claude with improved coding and reasoning.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-3-haiku", "name": "Claude 3 Haiku", "shortName": "Claude 3 Haiku", "company": "Anthropic",
-      "releaseDate": "2024-03-13", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text+vision", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 200000, "tags": ["claude", "anthropic", "fast"],
-      "description": "Smallest and fastest Claude 3 model. Optimized for speed and cost.", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-2.1",
+      "name": "Claude 2.1",
+      "shortName": "Claude 2.1",
+      "company": "Anthropic",
+      "releaseDate": "2023-11-21",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic"
+      ],
+      "description": "Claude 2.1 with 200K context and reduced hallucination rates.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-3-sonnet", "name": "Claude 3 Sonnet", "shortName": "Claude 3 Sonnet", "company": "Anthropic",
-      "releaseDate": "2024-03-04", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text+vision", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 200000, "tags": ["claude", "anthropic"],
-      "description": "Mid-tier Claude 3 balancing intelligence and speed.", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-3-haiku",
+      "name": "Claude 3 Haiku",
+      "shortName": "Claude 3 Haiku",
+      "company": "Anthropic",
+      "releaseDate": "2024-03-13",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic",
+        "fast"
+      ],
+      "description": "Smallest and fastest Claude 3 model. Optimized for speed and cost.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-3-opus", "name": "Claude 3 Opus", "shortName": "Claude 3 Opus", "company": "Anthropic",
-      "releaseDate": "2024-03-04", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text+vision", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 200000, "tags": ["claude", "anthropic", "flagship"],
+      "id": "anthropic/claude-3-sonnet",
+      "name": "Claude 3 Sonnet",
+      "shortName": "Claude 3 Sonnet",
+      "company": "Anthropic",
+      "releaseDate": "2024-03-04",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic"
+      ],
+      "description": "Mid-tier Claude 3 balancing intelligence and speed.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "anthropic/claude-3-opus",
+      "name": "Claude 3 Opus",
+      "shortName": "Claude 3 Opus",
+      "company": "Anthropic",
+      "releaseDate": "2024-03-04",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic",
+        "flagship"
+      ],
       "description": "Most powerful Claude 3 model. Near-human comprehension and fluency.",
-      "significance": "First Claude to match/exceed GPT-4 on benchmarks", "source": "curated", "lastVerified": "2025-06-15"
+      "significance": "First Claude to match/exceed GPT-4 on benchmarks",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-3.5-sonnet", "name": "Claude 3.5 Sonnet", "shortName": "Claude 3.5 Sonnet", "company": "Anthropic",
-      "releaseDate": "2024-06-20", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text+vision", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 200000, "tags": ["claude", "anthropic"],
-      "description": "Outperformed Opus at Sonnet's speed and cost. Introduced computer use.",
-      "significance": "Mid-tier model beating flagship — changed pricing expectations", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-3.5-sonnet",
+      "name": "Claude 3.5 Sonnet",
+      "shortName": "Claude 3.5 Sonnet",
+      "company": "Anthropic",
+      "releaseDate": "2024-06-20",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic"
+      ],
+      "description": "Outperformed Opus at Sonnet speed and cost.",
+      "significance": "Mid-tier model beating flagship, changed pricing expectations",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-3.5-sonnet-v2", "name": "Claude 3.5 Sonnet v2", "shortName": "Claude 3.5 Sonnet v2", "company": "Anthropic",
-      "releaseDate": "2024-10-22", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text+vision", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 200000, "tags": ["claude", "anthropic", "computer-use"],
-      "description": "Updated 3.5 Sonnet with computer use capabilities.", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-3.5-sonnet-v2",
+      "name": "Claude 3.5 Sonnet v2",
+      "shortName": "Claude 3.5 Sonnet v2",
+      "company": "Anthropic",
+      "releaseDate": "2024-10-22",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic",
+        "computer-use"
+      ],
+      "description": "Updated 3.5 Sonnet with computer use capabilities.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-3.6-sonnet", "name": "Claude 3.6 Sonnet", "shortName": "Claude 3.6 Sonnet", "company": "Anthropic",
-      "releaseDate": "2025-02-24", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text+vision", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 200000, "tags": ["claude", "anthropic", "extended-thinking"],
-      "description": "Also known as Claude 3.5 Sonnet updated. Supports extended thinking.",
-      "significance": "Introduced extended thinking mode for complex reasoning", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-3.5-haiku",
+      "name": "Claude 3.5 Haiku",
+      "shortName": "Claude 3.5 Haiku",
+      "company": "Anthropic",
+      "releaseDate": "2024-11-04",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic",
+        "fast"
+      ],
+      "description": "Upgraded Haiku matching Claude 3 Sonnet performance at Haiku speed and cost.",
+      "significance": "Fastest Claude model competitive with mid-tier predecessors",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-4-sonnet", "name": "Claude 4 Sonnet", "shortName": "Claude 4 Sonnet", "company": "Anthropic",
-      "releaseDate": "2025-05-22", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text+vision", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 200000, "tags": ["claude", "anthropic"],
+      "id": "anthropic/claude-3.7-sonnet",
+      "name": "Claude 3.7 Sonnet",
+      "shortName": "Claude 3.7 Sonnet",
+      "company": "Anthropic",
+      "releaseDate": "2025-02-24",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic",
+        "extended-thinking"
+      ],
+      "description": "First hybrid reasoning model. Supports extended thinking for complex problems.",
+      "significance": "Introduced extended thinking mode for complex reasoning",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "anthropic/claude-4-sonnet",
+      "name": "Claude Sonnet 4",
+      "shortName": "Claude Sonnet 4",
+      "company": "Anthropic",
+      "releaseDate": "2025-05-22",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic"
+      ],
       "description": "Fourth generation Claude Sonnet with improved coding and agentic capabilities.",
-      "significance": "Major leap in agentic and coding capabilities", "source": "curated", "lastVerified": "2025-06-15"
+      "significance": "Major leap in agentic and coding capabilities",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     },
     {
-      "id": "anthropic/claude-4-opus", "name": "Claude 4 Opus", "shortName": "Claude 4 Opus", "company": "Anthropic",
-      "releaseDate": "2025-06-24", "parameters": "Unknown", "parametersRaw": null,
-      "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)",
-      "modality": "text+vision", "license": "proprietary", "licenseType": "closed-source",
-      "contextWindow": 200000, "tags": ["claude", "anthropic", "flagship"],
-      "description": "Anthropic's most powerful model. State-of-the-art reasoning and analysis.",
-      "significance": "Anthropic's flagship model with deepest reasoning", "source": "curated", "lastVerified": "2025-06-15"
+      "id": "anthropic/claude-4-opus",
+      "name": "Claude Opus 4",
+      "shortName": "Claude Opus 4",
+      "company": "Anthropic",
+      "releaseDate": "2025-06-24",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 200000,
+      "tags": [
+        "claude",
+        "anthropic",
+        "flagship"
+      ],
+      "description": "Anthropic most powerful model. State-of-the-art reasoning, analysis, and sustained autonomous work.",
+      "significance": "Anthropic flagship model with deepest reasoning",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
     }
   ],
   "relationships": [
-    { "parent": "anthropic/claude-1", "child": "anthropic/claude-1.3", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-1", "child": "anthropic/claude-2", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-2", "child": "anthropic/claude-2.1", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-2", "child": "anthropic/claude-3-haiku", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-2", "child": "anthropic/claude-3-sonnet", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-2", "child": "anthropic/claude-3-opus", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-3-sonnet", "child": "anthropic/claude-3.5-sonnet", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-3.5-sonnet", "child": "anthropic/claude-3.5-sonnet-v2", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-3.5-sonnet-v2", "child": "anthropic/claude-3.6-sonnet", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-3.6-sonnet", "child": "anthropic/claude-4-sonnet", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "anthropic/claude-3-opus", "child": "anthropic/claude-4-opus", "type": "base", "source": "curated", "confidence": "high" }
+    {
+      "parent": "anthropic/claude-1",
+      "child": "anthropic/claude-instant-1.2",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-1",
+      "child": "anthropic/claude-1.3",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-1",
+      "child": "anthropic/claude-2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-2",
+      "child": "anthropic/claude-2.1",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-2",
+      "child": "anthropic/claude-3-haiku",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-2",
+      "child": "anthropic/claude-3-sonnet",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-2",
+      "child": "anthropic/claude-3-opus",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-3-sonnet",
+      "child": "anthropic/claude-3.5-sonnet",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-3.5-sonnet",
+      "child": "anthropic/claude-3.5-sonnet-v2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-3-haiku",
+      "child": "anthropic/claude-3.5-haiku",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-3.5-sonnet-v2",
+      "child": "anthropic/claude-3.7-sonnet",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-3.7-sonnet",
+      "child": "anthropic/claude-4-sonnet",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "anthropic/claude-3-opus",
+      "child": "anthropic/claude-4-opus",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    }
   ]
 }

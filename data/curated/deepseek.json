@@ -1,21 +1,371 @@
 {
   "models": [
-    { "id": "deepseek/deepseek-llm", "name": "DeepSeek LLM", "shortName": "DeepSeek LLM", "company": "DeepSeek", "releaseDate": "2023-11-29", "parameters": "7B/67B", "parametersRaw": 67000000000, "architecture": "LlamaForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "deepseek", "licenseType": "open-weight", "contextWindow": 4096, "tags": ["deepseek", "chinese-ai"], "description": "DeepSeek's first foundation model.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "deepseek/deepseek-coder", "name": "DeepSeek Coder", "shortName": "DeepSeek Coder", "company": "DeepSeek", "releaseDate": "2023-11-02", "parameters": "1.3B-33B", "parametersRaw": 33000000000, "architecture": "LlamaForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "code", "license": "deepseek", "licenseType": "open-weight", "contextWindow": 16384, "tags": ["deepseek", "code"], "description": "Code-specialized DeepSeek model trained on 2T code/text tokens.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "deepseek/deepseek-coder-v2", "name": "DeepSeek Coder V2", "shortName": "DeepSeek Coder V2", "company": "DeepSeek", "releaseDate": "2024-06-17", "parameters": "16B/236B (MoE)", "parametersRaw": 236000000000, "architecture": "DeepseekV2ForCausalLM", "architectureFamily": "Transformer (MoE)", "modality": "code", "license": "deepseek", "licenseType": "open-weight", "contextWindow": 131072, "tags": ["deepseek", "code", "moe"], "description": "MoE code model matching GPT-4 Turbo on coding benchmarks.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "deepseek/deepseek-v2", "name": "DeepSeek V2", "shortName": "DeepSeek V2", "company": "DeepSeek", "releaseDate": "2024-05-07", "parameters": "236B (MoE, 21B active)", "parametersRaw": 236000000000, "architecture": "DeepseekV2ForCausalLM", "architectureFamily": "Transformer (MoE)", "modality": "text", "license": "deepseek", "licenseType": "open-weight", "contextWindow": 131072, "tags": ["deepseek", "moe"], "paperUrl": "https://arxiv.org/abs/2405.04434", "description": "DeepSeek V2 with Multi-head Latent Attention and DeepSeekMoE architecture.", "significance": "Introduced MLA attention — drastically reduced KV cache", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "deepseek/deepseek-v2-chat", "name": "DeepSeek V2 Chat", "shortName": "DeepSeek V2 Chat", "company": "DeepSeek", "releaseDate": "2024-05-07", "parameters": "236B", "parametersRaw": 236000000000, "architecture": "DeepseekV2ForCausalLM", "architectureFamily": "Transformer (MoE)", "modality": "text", "license": "deepseek", "licenseType": "open-weight", "contextWindow": 131072, "tags": ["deepseek", "chat"], "description": "Chat-tuned DeepSeek V2.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "deepseek/deepseek-v3", "name": "DeepSeek V3", "shortName": "DeepSeek V3", "company": "DeepSeek", "releaseDate": "2024-12-26", "parameters": "671B (MoE, 37B active)", "parametersRaw": 671000000000, "architecture": "DeepseekV3ForCausalLM", "architectureFamily": "Transformer (MoE)", "modality": "text", "license": "deepseek", "licenseType": "open-weight", "contextWindow": 131072, "tags": ["deepseek", "moe", "landmark"], "paperUrl": "https://arxiv.org/abs/2412.19437", "description": "671B MoE model trained for $5.6M. Matches GPT-4o and Claude 3.5 Sonnet.", "significance": "Proved frontier-level models can be trained on a modest budget", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "deepseek/deepseek-r1", "name": "DeepSeek R1", "shortName": "DeepSeek R1", "company": "DeepSeek", "releaseDate": "2025-01-20", "parameters": "671B (MoE)", "parametersRaw": 671000000000, "architecture": "DeepseekV3ForCausalLM", "architectureFamily": "Transformer (MoE)", "modality": "text", "license": "mit", "licenseType": "open-source", "contextWindow": 131072, "tags": ["deepseek", "reasoning", "landmark"], "paperUrl": "https://arxiv.org/abs/2501.12948", "description": "Reasoning model matching OpenAI o1 on math and coding benchmarks. Open-sourced under MIT.", "significance": "First open-source model to match o1-level reasoning; trained with RL", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "deepseek/deepseek-r1-distill", "name": "DeepSeek R1 Distill", "shortName": "R1 Distill", "company": "DeepSeek", "releaseDate": "2025-01-20", "parameters": "1.5B-70B", "parametersRaw": 70000000000, "architecture": "Various", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "mit", "licenseType": "open-source", "contextWindow": 131072, "tags": ["deepseek", "reasoning", "distillation"], "description": "Distilled versions of R1's reasoning capabilities into smaller Qwen and Llama base models.", "source": "curated", "lastVerified": "2025-06-15" }
+    {
+      "id": "deepseek/deepseek-llm",
+      "name": "DeepSeek LLM",
+      "shortName": "DeepSeek LLM",
+      "company": "DeepSeek",
+      "releaseDate": "2023-11-29",
+      "parameters": "7B/67B",
+      "parametersRaw": 67000000000,
+      "architecture": "LlamaForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "deepseek",
+      "licenseType": "open-weight",
+      "contextWindow": 4096,
+      "tags": [
+        "deepseek",
+        "chinese-ai"
+      ],
+      "description": "DeepSeek first foundation model.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-coder",
+      "name": "DeepSeek Coder",
+      "shortName": "DeepSeek Coder",
+      "company": "DeepSeek",
+      "releaseDate": "2023-11-02",
+      "parameters": "1.3B-33B",
+      "parametersRaw": 33000000000,
+      "architecture": "LlamaForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "code",
+      "license": "deepseek",
+      "licenseType": "open-weight",
+      "contextWindow": 16384,
+      "tags": [
+        "deepseek",
+        "code"
+      ],
+      "description": "Code-specialized DeepSeek model trained on 2T code/text tokens.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-math",
+      "name": "DeepSeek Math",
+      "shortName": "DeepSeek Math",
+      "company": "DeepSeek",
+      "releaseDate": "2024-02-05",
+      "parameters": "7B",
+      "parametersRaw": 7000000000,
+      "architecture": "LlamaForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "deepseek",
+      "licenseType": "open-weight",
+      "contextWindow": 4096,
+      "tags": [
+        "deepseek",
+        "math"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2402.03300",
+      "description": "Math-specialized model achieving near GPT-4 level on mathematical benchmarks.",
+      "significance": "Showed specialized training can match general frontier models on math",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-vl",
+      "name": "DeepSeek VL",
+      "shortName": "DeepSeek VL",
+      "company": "DeepSeek",
+      "releaseDate": "2024-03-08",
+      "parameters": "1.3B/7B",
+      "parametersRaw": 7000000000,
+      "architecture": "DeepseekVLForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only, Multimodal)",
+      "modality": "text+vision",
+      "license": "deepseek",
+      "licenseType": "open-weight",
+      "contextWindow": 4096,
+      "tags": [
+        "deepseek",
+        "vision",
+        "multimodal"
+      ],
+      "description": "Vision-language model for multimodal understanding tasks.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-v2",
+      "name": "DeepSeek V2",
+      "shortName": "DeepSeek V2",
+      "company": "DeepSeek",
+      "releaseDate": "2024-05-07",
+      "parameters": "236B (MoE, 21B active)",
+      "parametersRaw": 236000000000,
+      "architecture": "DeepseekV2ForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "deepseek",
+      "licenseType": "open-weight",
+      "contextWindow": 131072,
+      "tags": [
+        "deepseek",
+        "moe"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2405.04434",
+      "description": "DeepSeek V2 with Multi-head Latent Attention and DeepSeekMoE architecture.",
+      "significance": "Introduced MLA attention — drastically reduced KV cache",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-v2-chat",
+      "name": "DeepSeek V2 Chat",
+      "shortName": "DeepSeek V2 Chat",
+      "company": "DeepSeek",
+      "releaseDate": "2024-05-07",
+      "parameters": "236B",
+      "parametersRaw": 236000000000,
+      "architecture": "DeepseekV2ForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "deepseek",
+      "licenseType": "open-weight",
+      "contextWindow": 131072,
+      "tags": [
+        "deepseek",
+        "chat"
+      ],
+      "description": "Chat-tuned DeepSeek V2.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-coder-v2",
+      "name": "DeepSeek Coder V2",
+      "shortName": "DeepSeek Coder V2",
+      "company": "DeepSeek",
+      "releaseDate": "2024-06-17",
+      "parameters": "16B/236B (MoE)",
+      "parametersRaw": 236000000000,
+      "architecture": "DeepseekV2ForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "code",
+      "license": "deepseek",
+      "licenseType": "open-weight",
+      "contextWindow": 131072,
+      "tags": [
+        "deepseek",
+        "code",
+        "moe"
+      ],
+      "description": "MoE code model matching GPT-4 Turbo on coding benchmarks.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-v2.5",
+      "name": "DeepSeek V2.5",
+      "shortName": "DeepSeek V2.5",
+      "company": "DeepSeek",
+      "releaseDate": "2024-09-05",
+      "parameters": "236B (MoE)",
+      "parametersRaw": 236000000000,
+      "architecture": "DeepseekV2ForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text+code",
+      "license": "deepseek",
+      "licenseType": "open-weight",
+      "contextWindow": 131072,
+      "tags": [
+        "deepseek",
+        "moe",
+        "unified"
+      ],
+      "description": "Unified V2 Chat and Coder V2 into a single model combining general and coding capabilities.",
+      "significance": "Unified chat and code models into single deployment",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-v3",
+      "name": "DeepSeek V3",
+      "shortName": "DeepSeek V3",
+      "company": "DeepSeek",
+      "releaseDate": "2024-12-26",
+      "parameters": "671B (MoE, 37B active)",
+      "parametersRaw": 671000000000,
+      "architecture": "DeepseekV3ForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "deepseek",
+      "licenseType": "open-weight",
+      "contextWindow": 131072,
+      "tags": [
+        "deepseek",
+        "moe",
+        "landmark"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2412.19437",
+      "description": "671B MoE model trained for .6M. Matches GPT-4o and Claude 3.5 Sonnet.",
+      "significance": "Proved frontier-level models can be trained on a modest budget",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-r1-zero",
+      "name": "DeepSeek R1-Zero",
+      "shortName": "R1-Zero",
+      "company": "DeepSeek",
+      "releaseDate": "2025-01-20",
+      "parameters": "671B (MoE)",
+      "parametersRaw": 671000000000,
+      "architecture": "DeepseekV3ForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "deepseek",
+        "reasoning",
+        "rl"
+      ],
+      "description": "Pure RL-trained reasoning model without supervised fine-tuning. Showed emergent chain-of-thought.",
+      "significance": "Demonstrated reasoning can emerge from pure RL without SFT",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-r1",
+      "name": "DeepSeek R1",
+      "shortName": "DeepSeek R1",
+      "company": "DeepSeek",
+      "releaseDate": "2025-01-20",
+      "parameters": "671B (MoE)",
+      "parametersRaw": 671000000000,
+      "architecture": "DeepseekV3ForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "deepseek",
+        "reasoning",
+        "landmark"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2501.12948",
+      "description": "Reasoning model matching OpenAI o1 on math and coding benchmarks. Open-sourced under MIT.",
+      "significance": "First open-source model to match o1-level reasoning; trained with RL",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "deepseek/deepseek-r1-distill",
+      "name": "DeepSeek R1 Distill",
+      "shortName": "R1 Distill",
+      "company": "DeepSeek",
+      "releaseDate": "2025-01-20",
+      "parameters": "1.5B-70B",
+      "parametersRaw": 70000000000,
+      "architecture": "Various",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mit",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "deepseek",
+        "reasoning",
+        "distillation"
+      ],
+      "description": "Distilled versions of R1 reasoning capabilities into smaller Qwen and Llama base models.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    }
   ],
   "relationships": [
-    { "parent": "deepseek/deepseek-llm", "child": "deepseek/deepseek-coder", "type": "finetune", "source": "curated", "confidence": "high" },
-    { "parent": "deepseek/deepseek-coder", "child": "deepseek/deepseek-coder-v2", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "deepseek/deepseek-llm", "child": "deepseek/deepseek-v2", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "deepseek/deepseek-v2", "child": "deepseek/deepseek-v2-chat", "type": "finetune", "source": "curated", "confidence": "high" },
-    { "parent": "deepseek/deepseek-v2", "child": "deepseek/deepseek-v3", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "deepseek/deepseek-v3", "child": "deepseek/deepseek-r1", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "deepseek/deepseek-r1", "child": "deepseek/deepseek-r1-distill", "type": "distillation", "source": "curated", "confidence": "high" }
+    {
+      "parent": "deepseek/deepseek-llm",
+      "child": "deepseek/deepseek-coder",
+      "type": "finetune",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-llm",
+      "child": "deepseek/deepseek-math",
+      "type": "finetune",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-llm",
+      "child": "deepseek/deepseek-vl",
+      "type": "multimodal-extension",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-llm",
+      "child": "deepseek/deepseek-v2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-v2",
+      "child": "deepseek/deepseek-v2-chat",
+      "type": "finetune",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-coder",
+      "child": "deepseek/deepseek-coder-v2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-v2-chat",
+      "child": "deepseek/deepseek-v2.5",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-coder-v2",
+      "child": "deepseek/deepseek-v2.5",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-v2",
+      "child": "deepseek/deepseek-v3",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-v3",
+      "child": "deepseek/deepseek-r1-zero",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-r1-zero",
+      "child": "deepseek/deepseek-r1",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "deepseek/deepseek-r1",
+      "child": "deepseek/deepseek-r1-distill",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    }
   ]
 }

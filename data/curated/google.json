@@ -13,9 +13,13 @@
       "modality": "text",
       "license": "apache-2.0",
       "licenseType": "open-source",
-      "tags": ["transformer", "google", "seminal"],
+      "tags": [
+        "transformer",
+        "google",
+        "seminal"
+      ],
       "paperUrl": "https://arxiv.org/abs/1706.03762",
-      "description": "The original Transformer architecture from 'Attention Is All You Need'.",
+      "description": "The original Transformer architecture from Attention Is All You Need.",
       "significance": "Foundation of all modern LLMs — introduced self-attention",
       "source": "curated",
       "lastVerified": "2025-06-15"
@@ -34,11 +38,16 @@
       "license": "apache-2.0",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["bert", "google", "encoder", "landmark"],
+      "tags": [
+        "bert",
+        "google",
+        "encoder",
+        "landmark"
+      ],
       "huggingfaceUrl": "https://huggingface.co/google-bert/bert-base-uncased",
       "paperUrl": "https://arxiv.org/abs/1810.04805",
       "description": "Bidirectional Encoder Representations from Transformers. Revolutionized NLP with masked language modeling.",
-      "significance": "Dominated NLP benchmarks; sparked the pre-train → fine-tune paradigm",
+      "significance": "Dominated NLP benchmarks; sparked the pre-train then fine-tune paradigm",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -56,7 +65,11 @@
       "license": "mit",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["roberta", "meta", "encoder"],
+      "tags": [
+        "roberta",
+        "meta",
+        "encoder"
+      ],
       "paperUrl": "https://arxiv.org/abs/1907.11692",
       "description": "Robustly Optimized BERT. Showed BERT was significantly undertrained.",
       "significance": "Proved that training recipe matters as much as architecture",
@@ -77,7 +90,11 @@
       "license": "apache-2.0",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["distilbert", "huggingface", "distillation"],
+      "tags": [
+        "distilbert",
+        "huggingface",
+        "distillation"
+      ],
       "paperUrl": "https://arxiv.org/abs/1910.01108",
       "description": "Distilled version of BERT that is 60% faster while retaining 97% of language understanding.",
       "significance": "Showed knowledge distillation works brilliantly for transformers",
@@ -98,7 +115,11 @@
       "license": "apache-2.0",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["albert", "google", "parameter-efficient"],
+      "tags": [
+        "albert",
+        "google",
+        "parameter-efficient"
+      ],
       "paperUrl": "https://arxiv.org/abs/1909.11942",
       "description": "A Lite BERT with parameter reduction techniques like factorized embeddings and cross-layer parameter sharing.",
       "significance": "Pioneered parameter-efficient transformer architectures",
@@ -119,7 +140,10 @@
       "license": "apache-2.0",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["electra", "google"],
+      "tags": [
+        "electra",
+        "google"
+      ],
       "paperUrl": "https://arxiv.org/abs/2003.10555",
       "description": "Replaced Masked LM with a replaced-token-detection pre-training task. More sample efficient than BERT.",
       "significance": "Showed alternative pre-training objectives can outperform MLM",
@@ -140,7 +164,11 @@
       "license": "mit",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["deberta", "microsoft", "disentangled-attention"],
+      "tags": [
+        "deberta",
+        "microsoft",
+        "disentangled-attention"
+      ],
       "paperUrl": "https://arxiv.org/abs/2006.03654",
       "description": "Decoding-enhanced BERT with Disentangled Attention. First to surpass human baseline on SuperGLUE.",
       "significance": "First model to beat human performance on SuperGLUE benchmark",
@@ -161,7 +189,10 @@
       "license": "mit",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["deberta", "microsoft"],
+      "tags": [
+        "deberta",
+        "microsoft"
+      ],
       "paperUrl": "https://arxiv.org/abs/2111.09543",
       "description": "Improved DeBERTa with ELECTRA-style pre-training and gradient-disentangled embeddings.",
       "source": "curated",
@@ -181,7 +212,11 @@
       "license": "apache-2.0",
       "licenseType": "open-source",
       "contextWindow": 8192,
-      "tags": ["modernbert", "answerai", "encoder"],
+      "tags": [
+        "modernbert",
+        "answerai",
+        "encoder"
+      ],
       "description": "Modernized BERT with rotary embeddings, flash attention, and 8192 context trained on 2T tokens.",
       "significance": "Brought modern architectural improvements to the encoder paradigm",
       "source": "curated",
@@ -201,7 +236,11 @@
       "license": "apache-2.0",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["t5", "google", "encoder-decoder"],
+      "tags": [
+        "t5",
+        "google",
+        "encoder-decoder"
+      ],
       "paperUrl": "https://arxiv.org/abs/1910.10683",
       "description": "Text-to-Text Transfer Transformer. Unified all NLP tasks into text-to-text format.",
       "significance": "Unified NLP under a single text-to-text paradigm",
@@ -222,7 +261,11 @@
       "license": "apache-2.0",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["t5", "google", "multilingual"],
+      "tags": [
+        "t5",
+        "google",
+        "multilingual"
+      ],
       "paperUrl": "https://arxiv.org/abs/2010.11934",
       "description": "Multilingual T5 pre-trained on mC4 covering 101 languages.",
       "source": "curated",
@@ -242,7 +285,12 @@
       "license": "apache-2.0",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["t5", "google", "instruction-tuned", "flan"],
+      "tags": [
+        "t5",
+        "google",
+        "instruction-tuned",
+        "flan"
+      ],
       "paperUrl": "https://arxiv.org/abs/2210.11416",
       "description": "T5 fine-tuned on 1,836 tasks phrased as instructions. Massively improved zero-shot performance.",
       "significance": "Demonstrated the power of instruction tuning at scale",
@@ -263,9 +311,37 @@
       "license": "apache-2.0",
       "licenseType": "open-source",
       "contextWindow": 512,
-      "tags": ["ul2", "google", "unified"],
+      "tags": [
+        "ul2",
+        "google",
+        "unified"
+      ],
       "paperUrl": "https://arxiv.org/abs/2205.05131",
       "description": "Unifying Language Learning Paradigms. Combined various pre-training objectives.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "google/lamda",
+      "name": "LaMDA",
+      "shortName": "LaMDA",
+      "company": "Google",
+      "releaseDate": "2022-01-20",
+      "parameters": "137B",
+      "parametersRaw": 137000000000,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "tags": [
+        "lamda",
+        "google",
+        "conversational"
+      ],
+      "paperUrl": "https://arxiv.org/abs/2201.08239",
+      "description": "Language Model for Dialogue Applications. Designed for open-ended conversation.",
+      "significance": "Sparked the sentient AI debate; powered early Bard",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -283,7 +359,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 2048,
-      "tags": ["palm", "google", "landmark"],
+      "tags": [
+        "palm",
+        "google",
+        "landmark"
+      ],
       "paperUrl": "https://arxiv.org/abs/2204.02311",
       "description": "540B parameter model demonstrating breakthrough chain-of-thought reasoning.",
       "significance": "Showed emergent chain-of-thought reasoning in very large models",
@@ -304,10 +384,13 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 8192,
-      "tags": ["palm", "google"],
+      "tags": [
+        "palm",
+        "google"
+      ],
       "paperUrl": "https://arxiv.org/abs/2305.10403",
       "description": "Improved PaLM with compute-optimal scaling and multilingual training.",
-      "significance": "Powered Bard/Gemini and Google's AI products",
+      "significance": "Powered Bard/Gemini and Google AI products",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -324,7 +407,11 @@
       "modality": "text",
       "license": "proprietary",
       "licenseType": "closed-source",
-      "tags": ["palm", "google", "medical"],
+      "tags": [
+        "palm",
+        "google",
+        "medical"
+      ],
       "paperUrl": "https://arxiv.org/abs/2305.09617",
       "description": "Medical domain fine-tune of PaLM 2. Achieved expert-level medical knowledge.",
       "significance": "First AI to reach expert-level medical exam performance",
@@ -345,10 +432,39 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 32768,
-      "tags": ["gemini", "google", "multimodal", "landmark"],
+      "tags": [
+        "gemini",
+        "google",
+        "multimodal",
+        "landmark"
+      ],
       "blogUrl": "https://blog.google/technology/ai/google-gemini-ai/",
-      "description": "Google's natively multimodal model family built from the ground up.",
-      "significance": "Google's answer to GPT-4; first natively multimodal from the ground up",
+      "description": "Google natively multimodal model family built from the ground up.",
+      "significance": "Google answer to GPT-4; first natively multimodal from the ground up",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "google/gemini-1.0-nano",
+      "name": "Gemini 1.0 Nano",
+      "shortName": "Gemini Nano",
+      "company": "Google",
+      "releaseDate": "2023-12-06",
+      "parameters": "1.8B/3.25B",
+      "parametersRaw": 3250000000,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 32768,
+      "tags": [
+        "gemini",
+        "google",
+        "on-device"
+      ],
+      "description": "Smallest Gemini model designed for on-device deployment on Pixel phones.",
+      "significance": "First Google foundation model designed for mobile deployment",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -366,7 +482,10 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 32768,
-      "tags": ["gemini", "google"],
+      "tags": [
+        "gemini",
+        "google"
+      ],
       "description": "Mid-tier Gemini model balancing performance and efficiency.",
       "source": "curated",
       "lastVerified": "2025-06-15"
@@ -385,8 +504,37 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 32768,
-      "tags": ["gemini", "google", "flagship"],
+      "tags": [
+        "gemini",
+        "google",
+        "flagship"
+      ],
       "description": "The largest and most capable Gemini 1.0 model.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "google/gemma-1",
+      "name": "Gemma",
+      "shortName": "Gemma",
+      "company": "Google",
+      "releaseDate": "2024-02-21",
+      "parameters": "2B/7B",
+      "parametersRaw": 7000000000,
+      "architecture": "GemmaForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "gemma",
+      "licenseType": "open-weight",
+      "contextWindow": 8192,
+      "tags": [
+        "gemma",
+        "google",
+        "open-weight"
+      ],
+      "huggingfaceUrl": "https://huggingface.co/google/gemma-7b",
+      "description": "Lightweight open models built from the same research as Gemini. Available in 2B and 7B sizes.",
+      "significance": "Google first open-weight LLM family derived from Gemini research",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -404,7 +552,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 2000000,
-      "tags": ["gemini", "google", "long-context"],
+      "tags": [
+        "gemini",
+        "google",
+        "long-context"
+      ],
       "paperUrl": "https://arxiv.org/abs/2403.05530",
       "description": "Gemini 1.5 Pro with 1M+ token context window using MoE architecture.",
       "significance": "Pioneered million-token context windows",
@@ -425,8 +577,37 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 1000000,
-      "tags": ["gemini", "google", "fast"],
+      "tags": [
+        "gemini",
+        "google",
+        "fast"
+      ],
       "description": "Lightweight, fast Gemini optimized for speed and efficiency.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "google/gemma-2",
+      "name": "Gemma 2",
+      "shortName": "Gemma 2",
+      "company": "Google",
+      "releaseDate": "2024-06-27",
+      "parameters": "2B/9B/27B",
+      "parametersRaw": 27000000000,
+      "architecture": "Gemma2ForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "gemma",
+      "licenseType": "open-weight",
+      "contextWindow": 8192,
+      "tags": [
+        "gemma",
+        "google",
+        "open-weight"
+      ],
+      "huggingfaceUrl": "https://huggingface.co/google/gemma-2-27b",
+      "description": "Second generation Gemma with improved performance and new 27B size variant.",
+      "significance": "Best-in-class open model at each size point",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -444,7 +625,11 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 1000000,
-      "tags": ["gemini", "google", "agentic"],
+      "tags": [
+        "gemini",
+        "google",
+        "agentic"
+      ],
       "description": "Next-gen Flash with agentic capabilities and multimodal output.",
       "significance": "First Gemini with native tool use and agentic features",
       "source": "curated",
@@ -464,9 +649,13 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 1000000,
-      "tags": ["gemini", "google", "thinking"],
-      "description": "Google's thinking model with built-in reasoning capabilities.",
-      "significance": "Google's answer to reasoning models (o1/o3)",
+      "tags": [
+        "gemini",
+        "google",
+        "thinking"
+      ],
+      "description": "Google thinking model with built-in reasoning capabilities.",
+      "significance": "Google answer to reasoning models (o1/o3)",
       "source": "curated",
       "lastVerified": "2025-06-15"
     },
@@ -484,35 +673,213 @@
       "license": "proprietary",
       "licenseType": "closed-source",
       "contextWindow": 1000000,
-      "tags": ["gemini", "google", "thinking", "fast"],
+      "tags": [
+        "gemini",
+        "google",
+        "thinking",
+        "fast"
+      ],
       "description": "Fast thinking model combining speed with reasoning.",
       "source": "curated",
       "lastVerified": "2025-06-15"
     }
   ],
   "relationships": [
-    { "parent": "google/transformer", "child": "google/bert", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "google/transformer", "child": "openai/gpt-1", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "google/transformer", "child": "google/t5", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "google/bert", "child": "meta/roberta", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "google/bert", "child": "huggingface/distilbert", "type": "distillation", "source": "curated", "confidence": "high" },
-    { "parent": "google/bert", "child": "google/albert", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "google/bert", "child": "google/electra", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "google/bert", "child": "microsoft/deberta", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "microsoft/deberta", "child": "microsoft/deberta-v3", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "google/bert", "child": "answerai/modernbert", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "google/t5", "child": "google/mt5", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "google/t5", "child": "google/flan-t5", "type": "finetune", "source": "curated", "confidence": "high" },
-    { "parent": "google/t5", "child": "google/ul2", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "google/palm", "child": "google/palm-2", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "google/palm-2", "child": "google/med-palm-2", "type": "finetune", "source": "curated", "confidence": "high" },
-    { "parent": "google/palm", "child": "google/gemini-1.0", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "google/gemini-1.0", "child": "google/gemini-1.0-pro", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "google/gemini-1.0", "child": "google/gemini-1.0-ultra", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "google/gemini-1.0", "child": "google/gemini-1.5-pro", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "google/gemini-1.5-pro", "child": "google/gemini-1.5-flash", "type": "distillation", "source": "curated", "confidence": "high" },
-    { "parent": "google/gemini-1.5-pro", "child": "google/gemini-2.0-flash", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "google/gemini-2.0-flash", "child": "google/gemini-2.5-pro", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "google/gemini-2.5-pro", "child": "google/gemini-2.5-flash", "type": "distillation", "source": "curated", "confidence": "high" }
+    {
+      "parent": "google/transformer",
+      "child": "google/bert",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/transformer",
+      "child": "openai/gpt-1",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/transformer",
+      "child": "google/t5",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/bert",
+      "child": "meta/roberta",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/bert",
+      "child": "huggingface/distilbert",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/bert",
+      "child": "google/albert",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/bert",
+      "child": "google/electra",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/bert",
+      "child": "microsoft/deberta",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "microsoft/deberta",
+      "child": "microsoft/deberta-v3",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/bert",
+      "child": "answerai/modernbert",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/t5",
+      "child": "google/mt5",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/t5",
+      "child": "google/flan-t5",
+      "type": "finetune",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/t5",
+      "child": "google/ul2",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/transformer",
+      "child": "google/lamda",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/lamda",
+      "child": "google/palm",
+      "type": "base",
+      "source": "curated",
+      "confidence": "medium"
+    },
+    {
+      "parent": "google/palm",
+      "child": "google/palm-2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/palm-2",
+      "child": "google/med-palm-2",
+      "type": "finetune",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/palm",
+      "child": "google/gemini-1.0",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemini-1.0",
+      "child": "google/gemini-1.0-nano",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemini-1.0",
+      "child": "google/gemini-1.0-pro",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemini-1.0",
+      "child": "google/gemini-1.0-ultra",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemini-1.0",
+      "child": "google/gemma-1",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemini-1.0",
+      "child": "google/gemini-1.5-pro",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemini-1.5-pro",
+      "child": "google/gemini-1.5-flash",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemma-1",
+      "child": "google/gemma-2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemini-1.5-pro",
+      "child": "google/gemini-2.0-flash",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemini-2.0-flash",
+      "child": "google/gemini-2.5-pro",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "google/gemini-2.5-pro",
+      "child": "google/gemini-2.5-flash",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    }
   ]
 }

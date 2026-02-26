@@ -1,0 +1,243 @@
+{
+  "models": [
+    {
+      "id": "xai/grok-1",
+      "name": "Grok-1",
+      "shortName": "Grok-1",
+      "company": "xAI",
+      "releaseDate": "2024-03-17",
+      "parameters": "314B (MoE, 86B active)",
+      "parametersRaw": 314000000000,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 8192,
+      "tags": [
+        "grok",
+        "xai",
+        "moe"
+      ],
+      "description": "xAI first model, open-sourced under Apache 2.0. MoE architecture with 8 experts.",
+      "significance": "Largest open-source MoE model at time of release",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "xai/grok-1.5",
+      "name": "Grok-1.5",
+      "shortName": "Grok-1.5",
+      "company": "xAI",
+      "releaseDate": "2024-03-28",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 131072,
+      "tags": [
+        "grok",
+        "xai"
+      ],
+      "description": "Improved Grok with 128K context window and enhanced reasoning.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "xai/grok-1.5-vision",
+      "name": "Grok-1.5 Vision",
+      "shortName": "Grok-1.5V",
+      "company": "xAI",
+      "releaseDate": "2024-04-12",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (MoE, Multimodal)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 131072,
+      "tags": [
+        "grok",
+        "xai",
+        "vision",
+        "multimodal"
+      ],
+      "description": "First multimodal Grok model with image understanding capabilities.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "xai/grok-2",
+      "name": "Grok-2",
+      "shortName": "Grok-2",
+      "company": "xAI",
+      "releaseDate": "2024-08-13",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 131072,
+      "tags": [
+        "grok",
+        "xai"
+      ],
+      "description": "Second generation Grok competitive with GPT-4o and Claude 3.5 Sonnet on benchmarks.",
+      "significance": "Put xAI on the competitive frontier map",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "xai/grok-2-mini",
+      "name": "Grok-2 mini",
+      "shortName": "Grok-2 mini",
+      "company": "xAI",
+      "releaseDate": "2024-08-13",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 131072,
+      "tags": [
+        "grok",
+        "xai",
+        "mini"
+      ],
+      "description": "Smaller, faster variant of Grok-2 for cost-effective deployments.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "xai/grok-3",
+      "name": "Grok 3",
+      "shortName": "Grok 3",
+      "company": "xAI",
+      "releaseDate": "2025-02-18",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 131072,
+      "tags": [
+        "grok",
+        "xai",
+        "landmark"
+      ],
+      "description": "Third generation Grok trained on xAI Colossus supercluster (100K H100s). Competitive with frontier models.",
+      "significance": "Trained on one of the worlds largest GPU clusters",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "xai/grok-3-mini",
+      "name": "Grok 3 mini",
+      "shortName": "Grok 3 mini",
+      "company": "xAI",
+      "releaseDate": "2025-02-18",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 131072,
+      "tags": [
+        "grok",
+        "xai",
+        "mini",
+        "reasoning"
+      ],
+      "description": "Smaller Grok 3 with reasoning capabilities. Uses think mode for chain-of-thought.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "xai/grok-4",
+      "name": "Grok 4",
+      "shortName": "Grok 4",
+      "company": "xAI",
+      "releaseDate": "2025-07-11",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text+vision",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 256000,
+      "tags": [
+        "grok",
+        "xai",
+        "reasoning"
+      ],
+      "description": "Fourth generation Grok with advanced reasoning capabilities. Competes with Claude Opus 4 and o3.",
+      "significance": "xAI entry into frontier reasoning model competition",
+      "source": "curated",
+      "lastVerified": "2025-07-15"
+    }
+  ],
+  "relationships": [
+    {
+      "parent": "xai/grok-1",
+      "child": "xai/grok-1.5",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "xai/grok-1.5",
+      "child": "xai/grok-1.5-vision",
+      "type": "multimodal-extension",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "xai/grok-1.5",
+      "child": "xai/grok-2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "xai/grok-2",
+      "child": "xai/grok-2-mini",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "xai/grok-2",
+      "child": "xai/grok-3",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "xai/grok-3",
+      "child": "xai/grok-3-mini",
+      "type": "distillation",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "xai/grok-3",
+      "child": "xai/grok-4",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    }
+  ]
+}

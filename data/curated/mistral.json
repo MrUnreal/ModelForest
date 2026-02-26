@@ -1,29 +1,420 @@
 {
   "models": [
-    { "id": "mistralai/mistral-7b", "name": "Mistral 7B", "shortName": "Mistral 7B", "company": "Mistral", "releaseDate": "2023-09-27", "parameters": "7B", "parametersRaw": 7000000000, "architecture": "MistralForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "apache-2.0", "licenseType": "open-source", "contextWindow": 8192, "tags": ["mistral", "sliding-window"], "huggingfaceUrl": "https://huggingface.co/mistralai/Mistral-7B-v0.1", "paperUrl": "https://arxiv.org/abs/2310.06825", "description": "Mistral's first model. Outperformed Llama 2 13B on all benchmarks despite being half the size.", "significance": "Proved European AI could compete; introduced sliding window attention", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/mistral-7b-instruct-v0.1", "name": "Mistral 7B Instruct v0.1", "shortName": "Mistral 7B Inst v0.1", "company": "Mistral", "releaseDate": "2023-09-27", "parameters": "7B", "parametersRaw": 7000000000, "architecture": "MistralForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "apache-2.0", "licenseType": "open-source", "contextWindow": 8192, "tags": ["mistral", "instruct"], "description": "Instruction-tuned Mistral 7B.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/mistral-7b-v0.2", "name": "Mistral 7B v0.2", "shortName": "Mistral 7B v0.2", "company": "Mistral", "releaseDate": "2024-01-01", "parameters": "7B", "parametersRaw": 7000000000, "architecture": "MistralForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "apache-2.0", "licenseType": "open-source", "contextWindow": 32768, "tags": ["mistral"], "description": "Updated Mistral 7B with 32K context window.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/mixtral-8x7b", "name": "Mixtral 8x7B", "shortName": "Mixtral 8x7B", "company": "Mistral", "releaseDate": "2023-12-11", "parameters": "46.7B (12.9B active)", "parametersRaw": 46700000000, "architecture": "MixtralForCausalLM", "architectureFamily": "Transformer (MoE)", "modality": "text", "license": "apache-2.0", "licenseType": "open-source", "contextWindow": 32768, "tags": ["mistral", "moe", "landmark"], "huggingfaceUrl": "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1", "paperUrl": "https://arxiv.org/abs/2401.04088", "description": "Sparse Mixture of Experts model. 8 experts, 2 active per token.", "significance": "Made MoE architectures accessible to the open-source community", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/mixtral-8x7b-instruct", "name": "Mixtral 8x7B Instruct", "shortName": "Mixtral 8x7B Inst", "company": "Mistral", "releaseDate": "2024-01-08", "parameters": "46.7B", "parametersRaw": 46700000000, "architecture": "MixtralForCausalLM", "architectureFamily": "Transformer (MoE)", "modality": "text", "license": "apache-2.0", "licenseType": "open-source", "contextWindow": 32768, "tags": ["mistral", "moe", "instruct"], "description": "Instruction-tuned Mixtral.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/mixtral-8x22b", "name": "Mixtral 8x22B", "shortName": "Mixtral 8x22B", "company": "Mistral", "releaseDate": "2024-04-17", "parameters": "176B (39B active)", "parametersRaw": 176000000000, "architecture": "MixtralForCausalLM", "architectureFamily": "Transformer (MoE)", "modality": "text", "license": "apache-2.0", "licenseType": "open-source", "contextWindow": 65536, "tags": ["mistral", "moe"], "description": "Larger MoE variant with 8x22B architecture.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/mistral-large", "name": "Mistral Large", "shortName": "Mistral Large", "company": "Mistral", "releaseDate": "2024-02-26", "parameters": "Unknown", "parametersRaw": null, "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "proprietary", "licenseType": "closed-source", "contextWindow": 32768, "tags": ["mistral", "flagship"], "description": "Mistral's flagship commercial model.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/mistral-large-2", "name": "Mistral Large 2", "shortName": "Mistral Large 2", "company": "Mistral", "releaseDate": "2024-07-24", "parameters": "123B", "parametersRaw": 123000000000, "architecture": "MistralForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text", "license": "mistral-research", "licenseType": "open-weight", "contextWindow": 131072, "tags": ["mistral", "flagship"], "description": "Open-weight 123B model competing with GPT-4o and Llama 3.1 405B.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/codestral", "name": "Codestral", "shortName": "Codestral", "company": "Mistral", "releaseDate": "2024-05-29", "parameters": "22B", "parametersRaw": 22000000000, "architecture": "MistralForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "code", "license": "mistral-non-production", "licenseType": "open-weight", "contextWindow": 32768, "tags": ["mistral", "code"], "description": "Mistral's code-specialized model trained on 80+ programming languages.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/pixtral", "name": "Pixtral 12B", "shortName": "Pixtral", "company": "Mistral", "releaseDate": "2024-09-17", "parameters": "12B", "parametersRaw": 12000000000, "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only, Multimodal)", "modality": "text+vision", "license": "apache-2.0", "licenseType": "open-source", "contextWindow": 131072, "tags": ["mistral", "vision", "multimodal"], "description": "Mistral's first multimodal model with native image understanding.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/pixtral-large", "name": "Pixtral Large", "shortName": "Pixtral Large", "company": "Mistral", "releaseDate": "2024-11-18", "parameters": "124B", "parametersRaw": 124000000000, "architecture": "TransformerDecoder", "architectureFamily": "Transformer (Decoder-only, Multimodal)", "modality": "text+vision", "license": "mistral-research", "licenseType": "open-weight", "contextWindow": 131072, "tags": ["mistral", "vision", "multimodal", "flagship"], "description": "Large-scale multimodal Mistral model.", "source": "curated", "lastVerified": "2025-06-15" },
-    { "id": "mistralai/mistral-small-3.1", "name": "Mistral Small 3.1", "shortName": "Mistral Small 3.1", "company": "Mistral", "releaseDate": "2025-03-18", "parameters": "24B", "parametersRaw": 24000000000, "architecture": "MistralForCausalLM", "architectureFamily": "Transformer (Decoder-only)", "modality": "text+vision", "license": "apache-2.0", "licenseType": "open-source", "contextWindow": 131072, "tags": ["mistral", "small", "multimodal"], "description": "Efficient 24B model with vision capabilities.", "source": "curated", "lastVerified": "2025-06-15" }
+    {
+      "id": "mistralai/mistral-7b",
+      "name": "Mistral 7B",
+      "shortName": "Mistral 7B",
+      "company": "Mistral",
+      "releaseDate": "2023-09-27",
+      "parameters": "7B",
+      "parametersRaw": 7000000000,
+      "architecture": "MistralForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 8192,
+      "tags": [
+        "mistral",
+        "sliding-window"
+      ],
+      "huggingfaceUrl": "https://huggingface.co/mistralai/Mistral-7B-v0.1",
+      "paperUrl": "https://arxiv.org/abs/2310.06825",
+      "description": "Mistral first model. Outperformed Llama 2 13B on all benchmarks despite being half the size.",
+      "significance": "Proved European AI could compete; introduced sliding window attention",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/mistral-7b-instruct-v0.1",
+      "name": "Mistral 7B Instruct v0.1",
+      "shortName": "Mistral 7B Inst v0.1",
+      "company": "Mistral",
+      "releaseDate": "2023-09-27",
+      "parameters": "7B",
+      "parametersRaw": 7000000000,
+      "architecture": "MistralForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 8192,
+      "tags": [
+        "mistral",
+        "instruct"
+      ],
+      "description": "Instruction-tuned Mistral 7B.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/mistral-7b-v0.2",
+      "name": "Mistral 7B v0.2",
+      "shortName": "Mistral 7B v0.2",
+      "company": "Mistral",
+      "releaseDate": "2024-01-01",
+      "parameters": "7B",
+      "parametersRaw": 7000000000,
+      "architecture": "MistralForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 32768,
+      "tags": [
+        "mistral"
+      ],
+      "description": "Updated Mistral 7B with 32K context window.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/mixtral-8x7b",
+      "name": "Mixtral 8x7B",
+      "shortName": "Mixtral 8x7B",
+      "company": "Mistral",
+      "releaseDate": "2023-12-11",
+      "parameters": "46.7B (12.9B active)",
+      "parametersRaw": 46700000000,
+      "architecture": "MixtralForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 32768,
+      "tags": [
+        "mistral",
+        "moe",
+        "landmark"
+      ],
+      "huggingfaceUrl": "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1",
+      "paperUrl": "https://arxiv.org/abs/2401.04088",
+      "description": "Sparse Mixture of Experts model. 8 experts, 2 active per token.",
+      "significance": "Made MoE architectures accessible to the open-source community",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/mixtral-8x7b-instruct",
+      "name": "Mixtral 8x7B Instruct",
+      "shortName": "Mixtral 8x7B Inst",
+      "company": "Mistral",
+      "releaseDate": "2024-01-08",
+      "parameters": "46.7B",
+      "parametersRaw": 46700000000,
+      "architecture": "MixtralForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 32768,
+      "tags": [
+        "mistral",
+        "moe",
+        "instruct"
+      ],
+      "description": "Instruction-tuned Mixtral.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/mistral-large",
+      "name": "Mistral Large",
+      "shortName": "Mistral Large",
+      "company": "Mistral",
+      "releaseDate": "2024-02-26",
+      "parameters": "Unknown",
+      "parametersRaw": null,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "proprietary",
+      "licenseType": "closed-source",
+      "contextWindow": 32768,
+      "tags": [
+        "mistral",
+        "flagship"
+      ],
+      "description": "Mistral flagship commercial model.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/mixtral-8x22b",
+      "name": "Mixtral 8x22B",
+      "shortName": "Mixtral 8x22B",
+      "company": "Mistral",
+      "releaseDate": "2024-04-17",
+      "parameters": "176B (39B active)",
+      "parametersRaw": 176000000000,
+      "architecture": "MixtralForCausalLM",
+      "architectureFamily": "Transformer (MoE)",
+      "modality": "text",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 65536,
+      "tags": [
+        "mistral",
+        "moe"
+      ],
+      "description": "Larger MoE variant with 8x22B architecture.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/codestral",
+      "name": "Codestral",
+      "shortName": "Codestral",
+      "company": "Mistral",
+      "releaseDate": "2024-05-29",
+      "parameters": "22B",
+      "parametersRaw": 22000000000,
+      "architecture": "MistralForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "code",
+      "license": "mistral-non-production",
+      "licenseType": "open-weight",
+      "contextWindow": 32768,
+      "tags": [
+        "mistral",
+        "code"
+      ],
+      "description": "Mistral code-specialized model trained on 80+ programming languages.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/codestral-mamba",
+      "name": "Codestral Mamba",
+      "shortName": "Codestral Mamba",
+      "company": "Mistral",
+      "releaseDate": "2024-07-16",
+      "parameters": "7B",
+      "parametersRaw": 7000000000,
+      "architecture": "MambaForCausalLM",
+      "architectureFamily": "State Space Model (Mamba)",
+      "modality": "code",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 256000,
+      "tags": [
+        "mistral",
+        "code",
+        "mamba",
+        "ssm"
+      ],
+      "description": "Code model using Mamba state-space architecture instead of Transformer. Offers linear-time inference.",
+      "significance": "First major non-Transformer code model from a leading AI lab",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/mistral-nemo",
+      "name": "Mistral Nemo",
+      "shortName": "Mistral Nemo",
+      "company": "Mistral",
+      "releaseDate": "2024-07-18",
+      "parameters": "12B",
+      "parametersRaw": 12000000000,
+      "architecture": "MistralForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "mistral",
+        "nvidia-collab"
+      ],
+      "description": "12B model built in collaboration with NVIDIA. Drop-in replacement for Mistral 7B with better performance.",
+      "significance": "Mistral-NVIDIA collaboration; strong 12B open model",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/mistral-large-2",
+      "name": "Mistral Large 2",
+      "shortName": "Mistral Large 2",
+      "company": "Mistral",
+      "releaseDate": "2024-07-24",
+      "parameters": "123B",
+      "parametersRaw": 123000000000,
+      "architecture": "MistralForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text",
+      "license": "mistral-research",
+      "licenseType": "open-weight",
+      "contextWindow": 131072,
+      "tags": [
+        "mistral",
+        "flagship"
+      ],
+      "description": "Open-weight 123B model competing with GPT-4o and Llama 3.1 405B.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/pixtral",
+      "name": "Pixtral 12B",
+      "shortName": "Pixtral",
+      "company": "Mistral",
+      "releaseDate": "2024-09-17",
+      "parameters": "12B",
+      "parametersRaw": 12000000000,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only, Multimodal)",
+      "modality": "text+vision",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "mistral",
+        "vision",
+        "multimodal"
+      ],
+      "description": "Mistral first multimodal model with native image understanding.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/pixtral-large",
+      "name": "Pixtral Large",
+      "shortName": "Pixtral Large",
+      "company": "Mistral",
+      "releaseDate": "2024-11-18",
+      "parameters": "124B",
+      "parametersRaw": 124000000000,
+      "architecture": "TransformerDecoder",
+      "architectureFamily": "Transformer (Decoder-only, Multimodal)",
+      "modality": "text+vision",
+      "license": "mistral-research",
+      "licenseType": "open-weight",
+      "contextWindow": 131072,
+      "tags": [
+        "mistral",
+        "vision",
+        "multimodal",
+        "flagship"
+      ],
+      "description": "Large-scale multimodal Mistral model.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    },
+    {
+      "id": "mistralai/mistral-small-3.1",
+      "name": "Mistral Small 3.1",
+      "shortName": "Mistral Small 3.1",
+      "company": "Mistral",
+      "releaseDate": "2025-03-18",
+      "parameters": "24B",
+      "parametersRaw": 24000000000,
+      "architecture": "MistralForCausalLM",
+      "architectureFamily": "Transformer (Decoder-only)",
+      "modality": "text+vision",
+      "license": "apache-2.0",
+      "licenseType": "open-source",
+      "contextWindow": 131072,
+      "tags": [
+        "mistral",
+        "small",
+        "multimodal"
+      ],
+      "description": "Efficient 24B model with vision capabilities.",
+      "source": "curated",
+      "lastVerified": "2025-06-15"
+    }
   ],
   "relationships": [
-    { "parent": "mistralai/mistral-7b", "child": "mistralai/mistral-7b-instruct-v0.1", "type": "finetune", "source": "curated", "confidence": "high" },
-    { "parent": "mistralai/mistral-7b", "child": "mistralai/mistral-7b-v0.2", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "mistralai/mistral-7b", "child": "mistralai/mixtral-8x7b", "type": "architecture", "source": "curated", "confidence": "high" },
-    { "parent": "mistralai/mixtral-8x7b", "child": "mistralai/mixtral-8x7b-instruct", "type": "finetune", "source": "curated", "confidence": "high" },
-    { "parent": "mistralai/mixtral-8x7b", "child": "mistralai/mixtral-8x22b", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "mistralai/mistral-7b", "child": "mistralai/mistral-large", "type": "base", "source": "curated", "confidence": "medium" },
-    { "parent": "mistralai/mistral-large", "child": "mistralai/mistral-large-2", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "mistralai/mistral-7b", "child": "mistralai/codestral", "type": "base", "source": "curated", "confidence": "medium" },
-    { "parent": "mistralai/mistral-7b", "child": "mistralai/pixtral", "type": "base", "source": "curated", "confidence": "medium" },
-    { "parent": "mistralai/pixtral", "child": "mistralai/pixtral-large", "type": "base", "source": "curated", "confidence": "high" },
-    { "parent": "mistralai/mistral-7b", "child": "mistralai/mistral-small-3.1", "type": "base", "source": "curated", "confidence": "medium" }
+    {
+      "parent": "mistralai/mistral-7b",
+      "child": "mistralai/mistral-7b-instruct-v0.1",
+      "type": "finetune",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "mistralai/mistral-7b",
+      "child": "mistralai/mistral-7b-v0.2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "mistralai/mistral-7b",
+      "child": "mistralai/mixtral-8x7b",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "mistralai/mixtral-8x7b",
+      "child": "mistralai/mixtral-8x7b-instruct",
+      "type": "finetune",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "mistralai/mixtral-8x7b",
+      "child": "mistralai/mixtral-8x22b",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "mistralai/mistral-7b",
+      "child": "mistralai/mistral-large",
+      "type": "base",
+      "source": "curated",
+      "confidence": "medium"
+    },
+    {
+      "parent": "mistralai/mistral-7b",
+      "child": "mistralai/codestral",
+      "type": "base",
+      "source": "curated",
+      "confidence": "medium"
+    },
+    {
+      "parent": "mistralai/codestral",
+      "child": "mistralai/codestral-mamba",
+      "type": "architecture",
+      "source": "curated",
+      "confidence": "medium"
+    },
+    {
+      "parent": "mistralai/mistral-7b",
+      "child": "mistralai/mistral-nemo",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "mistralai/mistral-large",
+      "child": "mistralai/mistral-large-2",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "mistralai/mistral-nemo",
+      "child": "mistralai/pixtral",
+      "type": "base",
+      "source": "curated",
+      "confidence": "medium"
+    },
+    {
+      "parent": "mistralai/pixtral",
+      "child": "mistralai/pixtral-large",
+      "type": "base",
+      "source": "curated",
+      "confidence": "high"
+    },
+    {
+      "parent": "mistralai/mistral-7b",
+      "child": "mistralai/mistral-small-3.1",
+      "type": "base",
+      "source": "curated",
+      "confidence": "medium"
+    }
   ]
 }
