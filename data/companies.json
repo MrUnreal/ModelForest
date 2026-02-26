@@ -1,0 +1,21 @@
+{
+  "companies": [
+    { "id": "openai", "name": "OpenAI", "color": "#10A37F", "founded": "2015", "hqLocation": "San Francisco, CA" },
+    { "id": "meta", "name": "Meta AI", "color": "#0668E1", "founded": "2013", "hqLocation": "Menlo Park, CA" },
+    { "id": "google", "name": "Google DeepMind", "color": "#FBBC04", "founded": "2010", "hqLocation": "London / Mountain View" },
+    { "id": "anthropic", "name": "Anthropic", "color": "#D4A574", "founded": "2021", "hqLocation": "San Francisco, CA" },
+    { "id": "mistral", "name": "Mistral AI", "color": "#F7931A", "founded": "2023", "hqLocation": "Paris, France" },
+    { "id": "microsoft", "name": "Microsoft", "color": "#00BCF2", "founded": "1975", "hqLocation": "Redmond, WA" },
+    { "id": "alibaba", "name": "Alibaba / Qwen", "color": "#FF6A00", "founded": "1999", "hqLocation": "Hangzhou, China" },
+    { "id": "deepseek", "name": "DeepSeek", "color": "#4A90D9", "founded": "2023", "hqLocation": "Hangzhou, China" },
+    { "id": "stabilityai", "name": "Stability AI", "color": "#A855F7", "founded": "2019", "hqLocation": "London, UK" },
+    { "id": "huggingface", "name": "Hugging Face", "color": "#FFD21E", "founded": "2016", "hqLocation": "New York, NY" },
+    { "id": "stanford", "name": "Stanford", "color": "#8C1515", "founded": "1891", "hqLocation": "Stanford, CA" },
+    { "id": "lmsys", "name": "LMSYS", "color": "#6366F1", "founded": "2023", "hqLocation": "UC Berkeley" },
+    { "id": "berkeley", "name": "UC Berkeley", "color": "#003262", "founded": "1868", "hqLocation": "Berkeley, CA" },
+    { "id": "compvis", "name": "CompVis (LMU Munich)", "color": "#009CDE", "founded": "2018", "hqLocation": "Munich, Germany" },
+    { "id": "runway", "name": "Runway", "color": "#FF4081", "founded": "2018", "hqLocation": "New York, NY" },
+    { "id": "bfl", "name": "Black Forest Labs", "color": "#2D5016", "founded": "2024", "hqLocation": "Freiburg, Germany" },
+    { "id": "answerai", "name": "Answer.AI", "color": "#22C55E", "founded": "2023", "hqLocation": "San Francisco, CA" }
+  ]
+}

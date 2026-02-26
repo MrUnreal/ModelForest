@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModelForest — Interactive AI Model Family Tree</title>
+    <meta name="description" content="Explore the complete genealogy of AI models. See how GPT, Llama, Claude, Gemini, and 200+ models evolved. Interactive tree updated daily from HuggingFace.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="ModelForest — Interactive AI Model Family Tree">
+    <meta property="og:description" content="Explore how every major AI model evolved from its ancestors. Interactive visualization of LLM genealogy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mrunreal.github.io/ModelForest/">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ModelForest — AI Model Family Tree">
+    <meta name="twitter:description" content="Interactive visualization showing how every major AI model evolved.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Fuse.js -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <h1 class="logo">
+                <span class="logo-icon">🌳</span>
+                <span class="logo-text">ModelForest</span>
+            </h1>
+            <span class="header-meta" id="header-meta">Loading...</span>
+        </div>
+        <div class="header-center">
+            <div class="search-container">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" id="search-input" class="search-input" placeholder="Search models... (Ctrl+K)" autocomplete="off">
+                <div class="search-results" id="search-results"></div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="view-toggle" id="view-toggle">
+                <button class="view-btn active" data-view="tree" title="Tree View">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v6m0 0-4 4m4-4 4 4m-8 0v4m8-4v4M4 17h4m8 0h4"/></svg>
+                </button>
+                <button class="view-btn" data-view="radial" title="Radial View">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><circle cx="12" cy="4" r="1.5"/><circle cx="19" cy="8" r="1.5"/><circle cx="19" cy="16" r="1.5"/><circle cx="12" cy="20" r="1.5"/><circle cx="5" cy="16" r="1.5"/><circle cx="5" cy="8" r="1.5"/></svg>
+                </button>
+            </div>
+            <a href="https://github.com/MrUnreal/ModelForest" target="_blank" class="github-link" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Filter Panel -->
+        <aside class="filter-panel" id="filter-panel">
+            <div class="filter-header">
+                <h2>Filters</h2>
+                <button class="filter-reset" id="filter-reset">Reset</button>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Company</h3>
+                <div class="filter-options" id="company-filters"></div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Modality</h3>
+                <div class="filter-options" id="modality-filters"></div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">License</h3>
+                <div class="filter-options" id="license-filters"></div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Year</h3>
+                <div class="filter-range" id="year-filter">
+                    <input type="range" id="year-min" min="2017" max="2026" value="2017" class="range-input">
+                    <div class="range-labels">
+                        <span id="year-min-label">2017</span>
+                        <span id="year-max-label">2026</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Visualization Area -->
+        <div class="viz-container" id="viz-container">
+            <div class="viz-controls">
+                <button class="viz-btn" id="zoom-in" title="Zoom In">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <button class="viz-btn" id="zoom-out" title="Zoom Out">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <button class="viz-btn" id="zoom-fit" title="Fit to Screen">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                </button>
+                <div class="viz-separator"></div>
+                <button class="viz-btn" id="expand-all" title="Expand All">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </button>
+                <button class="viz-btn" id="collapse-all" title="Collapse All">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+                </button>
+            </div>
+            <svg id="tree-svg"></svg>
+            <!-- Tooltip -->
+            <div class="tooltip" id="tooltip"></div>
+        </div>
+
+        <!-- Detail Sidebar -->
+        <aside class="detail-sidebar" id="detail-sidebar">
+            <button class="sidebar-close" id="sidebar-close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="sidebar-content" id="sidebar-content">
+                <div class="sidebar-placeholder">
+                    <p>Click a model node to see its details</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Legend -->
+    <div class="legend" id="legend">
+        <div class="legend-header">
+            <span>Legend</span>
+            <button class="legend-toggle" id="legend-toggle">▼</button>
+        </div>
+        <div class="legend-body" id="legend-body">
+            <div class="legend-section">
+                <span class="legend-label">Relationship:</span>
+                <div class="legend-items">
+                    <span class="legend-item"><span class="legend-line solid"></span> Base/Version</span>
+                    <span class="legend-item"><span class="legend-line dashed"></span> Fine-tune</span>
+                    <span class="legend-item"><span class="legend-line dotted"></span> Distillation</span>
+                </div>
+            </div>
+            <div class="legend-section">
+                <span class="legend-label">License:</span>
+                <div class="legend-items">
+                    <span class="legend-item"><span class="legend-border solid-border"></span> Open Source</span>
+                    <span class="legend-item"><span class="legend-border dashed-border"></span> Open Weight</span>
+                    <span class="legend-item"><span class="legend-border dotted-border"></span> Closed Source</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

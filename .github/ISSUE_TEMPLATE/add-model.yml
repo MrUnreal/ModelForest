@@ -1,0 +1,88 @@
+name: "🌳 Add Model Relationship"
+description: Submit a new model or model relationship to ModelForest
+title: "[Model] "
+labels: ["model-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing to ModelForest! Please fill in the details below.
+
+  - type: input
+    id: model-name
+    attributes:
+      label: Model Name
+      description: The full name of the model
+      placeholder: e.g., Llama 3.1 8B
+    validations:
+      required: true
+
+  - type: input
+    id: model-id
+    attributes:
+      label: Model ID
+      description: HuggingFace ID or a unique identifier (org/model-name)
+      placeholder: e.g., meta-llama/Llama-3.1-8B
+    validations:
+      required: true
+
+  - type: input
+    id: company
+    attributes:
+      label: Company / Organization
+      placeholder: e.g., Meta
+    validations:
+      required: true
+
+  - type: input
+    id: parent-model
+    attributes:
+      label: Parent Model ID
+      description: The model this is based on / derived from
+      placeholder: e.g., meta-llama/Llama-3-8B
+    validations:
+      required: true
+
+  - type: dropdown
+    id: relationship-type
+    attributes:
+      label: Relationship Type
+      options:
+        - base (next version)
+        - finetune (instruction tuning, RLHF, etc.)
+        - distillation (smaller student model)
+        - merge (model merge)
+        - architecture (architectural derivative)
+        - quantization (quantized variant)
+        - multimodal-extension (added new modality)
+        - adapter (LoRA, QLoRA, etc.)
+    validations:
+      required: true
+
+  - type: input
+    id: release-date
+    attributes:
+      label: Release Date
+      description: YYYY-MM-DD format
+      placeholder: e.g., 2024-07-23
+
+  - type: input
+    id: parameters
+    attributes:
+      label: Parameter Count
+      placeholder: e.g., 8B, 70B, 7B/13B/70B
+
+  - type: input
+    id: source-url
+    attributes:
+      label: Source URL
+      description: Link to paper, blog post, or model card confirming this relationship
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Any extra context about this model or relationship
